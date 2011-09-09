@@ -1,0 +1,51 @@
+#!/bin/sh
+
+set -eu
+PORTSDIR=${PORTSDIR:-/usr/ports}
+MYSTUFF=${PORTSDIR}/mystuff/
+
+TMP=$(mktemp)
+ALL=$(mktemp)
+MODIFIED=$(mktemp)
+DELETED=$(mktemp)
+MSG=$(mktemp)
+
+tempfiles="$TMP $ALL $MODIFIED $DELETED $MSG"
+trap "rm -f $tempfiles" 0 1 13 15
+
+# Get everything.
+cd "$PORTSDIR"
+
+git diff --no-prefix HEAD~1 HEAD		\
+	| egrep "^(\+\+\+|---) "		\
+	> "$TMP"
+git log -1 --format='%B' HEAD > "$MSG"
+
+cat "$TMP"					\
+	| egrep -B 1 -e "^\+\+\+ /dev/null"	\
+	| egrep -e "^--- "			\
+	| awk '{ print $2 }' 			\
+	| sort -u				\
+	> "$DELETED"
+
+cat "$TMP"					\
+	| egrep -v "^... /dev/null"		\
+	| awk '{ print $2 }' 			\
+	| sort -u				\
+	> "$ALL"
+
+comm -3 "$ALL" "$DELETED" > "$MODIFIED"
+
+#echo "All:"
+#cat "$ALL"
+#echo "Deleted:"
+#cat "$DELETED"
+#echo "Modified:"
+#cat "$MODIFIED"
+
+rsync -av --files-from="$MODIFIED" . "$MYSTUFF"
+
+cd "${MYSTUFF}"
+cat "$DELETED" | xargs -r rm -f
+
+git commit -a -F "$MSG"
