@@ -1,0 +1,5 @@
+@comment $OpenBSD$
+@bin bin/rsyncrypto
+@bin bin/rsyncrypto_recover
+@man man/man1/rsyncrypto.1
+@man man/man1/rsyncrypto_recover.1

@@ -1,0 +1,21 @@
+@comment $OpenBSD$
+@bin bin/eduke32
+@bin bin/mapster32
+share/duke3d-data/
+share/duke3d-data/COMMIT.EXE
+share/duke3d-data/DEFS.CON
+share/duke3d-data/DEMO1.DMO
+share/duke3d-data/DEMO2.DMO
+share/duke3d-data/DEMO3.DMO
+share/duke3d-data/DN3DHELP.EXE
+share/duke3d-data/DUKE.RTS
+share/duke3d-data/DUKE3D.EXE
+share/duke3d-data/DUKE3D.GRP
+share/duke3d-data/GAME.CON
+share/duke3d-data/LICENSE.TXT
+share/duke3d-data/MODEM.PCK
+share/duke3d-data/README.DOC
+share/duke3d-data/SETMAIN.EXE
+share/duke3d-data/SETUP.EXE
+share/duke3d-data/ULTRAMID.INI
+share/duke3d-data/USER.CON

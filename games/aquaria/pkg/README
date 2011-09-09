@@ -1,0 +1,13 @@
+To install game data files you need to install
+it on Windows or Macintosh and copy the data
+over to some directory, for example ~/aquaria.
+
+Copy ${PREFIX}/share/aquaria/* to the same
+directory:
+
+cp -r ${PREFIX}/share/aquaria/* ̃~/aquaria/
+
+To launch the game:
+
+cd ~/aquaria
+aquaria

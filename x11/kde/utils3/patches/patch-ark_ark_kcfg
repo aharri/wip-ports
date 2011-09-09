@@ -1,0 +1,12 @@
+$OpenBSD$
+--- ark/ark.kcfg.orig	Mon Mar 21 21:26:49 2011
++++ ark/ark.kcfg	Mon Mar 21 21:27:05 2011
+@@ -76,7 +76,7 @@
+ 		</entry>
+ 		<entry name="TarExe" type="String">
+ 			<label>Tar Command</label>
+-			<default>tar</default>
++			<default>gtar</default>
+ 		</entry>
+ 		<entry name="OpenDestinationFolder" type="Bool">
+ 			<label>Open destination folder after extraction</label>

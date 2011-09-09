@@ -1,0 +1,13 @@
+$OpenBSD$
+--- test/jni/Makefile.am.orig	Sat Jul  9 18:20:02 2011
++++ test/jni/Makefile.am	Sat Jul  9 18:20:07 2011
+@@ -94,8 +94,7 @@ libjniweaklib_la_LDFLAGS = \
+ 	$(KLIBFLAGS) \
+ 	-no-undefined \
+ 	-module \
+-	-rpath $(nativedir) \
+-	-release $(PACKAGE_VERSION)
++	-rpath $(nativedir)
+ 
+ JAVA_CLASSES = \
+ 	JNIWeakTest.class

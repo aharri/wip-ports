@@ -1,0 +1,19 @@
+$OpenBSD$
+--- source/gamedef.c.orig	Thu Apr  7 04:16:29 2011
++++ source/gamedef.c	Wed May  4 15:47:50 2011
+@@ -5676,12 +5676,12 @@ static void C_InitProjectiles(void)
+     defaultprojectile_t DefaultProjectile =
+     {
+         1, -1, 2048, 0, 0, SMALLSMOKE, -1, -1, 600, BULLETHOLE, -1, 0, 0, 448, g_numFreezeBounces, PIPEBOMB_BOUNCE, 1,
+-        100, -1, -1, -1, -1, -1, -96, 18, 18, 0, 1, 32
++        100, -1, -1, -1, -1, -1, -96, 18, 18, 0, 1, 32,
+     };
+ 
+     // this will only happen if I forget to update this function...
+-    if (offsetof(projectile_t, filler) != sizeof(DefaultProjectile))
+-        G_GameExit("ERROR: C_InitProjectiles(): projectile_t mismatch!");
++    //if (offsetof(projectile_t, filler) != sizeof(DefaultProjectile))
++    //    G_GameExit("ERROR: C_InitProjectiles(): projectile_t mismatch!");
+ 
+     for (i=MAXTILES-1; i>=0; i--)
+         Bmemcpy(&ProjectileData[i],&DefaultProjectile,sizeof(projectile_t));

@@ -1,0 +1,3 @@
+@comment $OpenBSD: ports/lang/kaffe/pkg/PFRAG.shared-main,v 1.1 2007/08/04 12:11:46 kurt Exp $
+@lib kaffe/jre/lib/${GNU_ARCH}/libkaffe.so.${LIBkaffe_VERSION}
+@lib kaffe/jre/lib/${GNU_ARCH}/libkaffevm.so.${LIBkaffevm_VERSION}

@@ -1,0 +1,13 @@
+$OpenBSD$
+--- include/sound.h.orig	Sat May 21 00:38:02 2011
++++ include/sound.h	Sat May 21 00:39:35 2011
+@@ -63,6 +63,9 @@ typedef struct {
+ } sfxcache_t;
+ 
+ typedef struct {
++    qboolean gamealive;
++    qboolean soundalive;
++    qboolean splitbuffer;
+     int channels;
+     int samples;		// mono samples in buffer
+     int submission_chunk;	// don't mix less than this #

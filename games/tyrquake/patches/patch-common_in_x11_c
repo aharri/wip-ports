@@ -1,0 +1,12 @@
+$OpenBSD$
+--- common/in_x11.c.orig	Sat May 21 01:14:42 2011
++++ common/in_x11.c	Sat May 21 01:16:47 2011
+@@ -25,7 +25,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston,
+ #include "vid.h"
+ #include "sys.h"
+ 
+-#include <X11/extensions/xf86dga.h>
++#include <X11/extensions/Xxf86dga.h>
+ 
+ // FIXME - make static when possible
+ qboolean mouse_available = false;	// Mouse available for use

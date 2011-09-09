@@ -1,0 +1,12 @@
+$OpenBSD$
+--- include/asm_i386.h.orig	Sat May 21 01:11:00 2011
++++ include/asm_i386.h	Sat May 21 01:11:28 2011
+@@ -21,7 +21,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston,
+ #ifndef ASM_I386_H
+ #define ASM_I386_H
+ 
+-#ifdef ELF
++#if defined(ELF) || defined(__ELF__)
+ #define C(label) label
+ #else
+ #define C(label) _##label

@@ -1,0 +1,11 @@
+$OpenBSD$
+--- libraries/clib/zip/Makefile.am.orig	Sat Jul  9 18:19:46 2011
++++ libraries/clib/zip/Makefile.am	Sat Jul  9 18:19:55 2011
+@@ -22,7 +22,6 @@ libzip_la_LDFLAGS = \
+ 	$(KLIBFLAGS) \
+ 	-no-undefined \
+ 	-module \
+-	-release $(PACKAGE_VERSION) \
+ 	-export-symbols-regex "^([Jj]ava|kaffe)_"
+ 
+ libzip_la_LIBADD = \

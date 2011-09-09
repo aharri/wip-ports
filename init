@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -eu
+PORTSDIR=${PORTSDIR:-/usr/ports}
+MYSTUFF=${PORTSDIR}/mystuff/
+
+TMP1=$(mktemp)
+trap "rm -f \"$TMP1\"" 0 1 13 15
+
+# Get everything.
+cd "$PORTSDIR" && \
+	git diff --no-prefix  master . | \
+	egrep "^(\+\+\+|---) "| \
+	fgrep -v /dev/null | \
+	awk '{ print $2 }' | \
+	sort -u > "$TMP1"
+
+cd "$PORTSDIR" && rsync -a --files-from="$TMP1" . "$MYSTUFF"
+
+

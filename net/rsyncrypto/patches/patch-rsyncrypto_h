@@ -1,0 +1,12 @@
+$OpenBSD$
+--- rsyncrypto.h.orig	Wed Apr 20 23:22:49 2011
++++ rsyncrypto.h	Wed Apr 20 23:22:51 2011
+@@ -75,7 +75,7 @@ struct startup_options {
+             trim->ival[0]=1;
+             rollwin->ival[0]=8192;
+             rollmin->ival[0]=8192;
+-            gzip->filename[0]="gzip";
++            gzip->filename[0]="gnugzip";
+             nenest->ival[0]=0;
+         }
+     }

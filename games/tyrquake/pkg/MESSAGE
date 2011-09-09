@@ -1,0 +1,18 @@
+TyrQuake requires the original Quake data files to be installed to
+  ${LOCALBASE}/share/games/quake/id1/pak0.pak
+  ${LOCALBASE}/share/games/quake/id1/pak1.pak
+  ${LOCALBASE}/share/games/quake/id1/config.cfg (optional)
+
+Run the game as follows:
+
+  $ tyr-quake 		# Software-rendered Quake
+  $ tyr-glquake 	# OpenGL-rendered Quake
+  $ tyr-qwcl		# Software-rendered QuakeWorld client
+  $ tyr-glqwcl		# OpenGL-rendered QuakeWorld client
+  $ tyr-qwsv		# QuakeWorld dedicated server
+
+Some helpful options:
+
+  -width		# set video width
+  -height		# set video height
+  -window		# used windowed mode opposed to fullscreen

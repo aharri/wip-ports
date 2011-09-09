@@ -1,0 +1,13 @@
+$OpenBSD$
+--- kaffe/xprof/Makefile.am.orig	Sat Jul  9 18:19:31 2011
++++ kaffe/xprof/Makefile.am	Sat Jul  9 18:19:38 2011
+@@ -25,8 +25,7 @@ native_LTLIBRARIES = libkaffexprof.la
+ 
+ libkaffexprof_la_LDFLAGS = \
+ 	-no-undefined \
+-	-export-dynamic \
+-	-release $(PACKAGE_VERSION)
++	-export-dynamic
+ 
+ libkaffexprof_la_LIBADD = $(VM_LIBS) $(M_LIBS)
+ 

@@ -1,0 +1,9 @@
+$OpenBSD$
+--- tests/regtest.orig	Wed Apr 20 22:14:16 2011
++++ tests/regtest	Wed Apr 20 22:14:21 2011
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/local/bin/bash
+ 
+ set -e
+ 

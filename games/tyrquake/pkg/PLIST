@@ -1,0 +1,6 @@
+@comment $OpenBSD$
+@bin bin/tyr-glquake
+@bin bin/tyr-glqwcl
+@bin bin/tyr-quake
+@bin bin/tyr-qwcl
+@bin bin/tyr-qwsv

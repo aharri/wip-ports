@@ -1,0 +1,12 @@
+$OpenBSD$
+--- common/cd_bsd.c.orig	Sat May 21 01:30:47 2011
++++ common/cd_bsd.c	Sat May 21 01:31:04 2011
+@@ -46,7 +46,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston,
+ #endif
+ 
+ static int cdfile = -1;
+-static char cd_dev[64] = _PATH_DEV "cdrom";
++static char cd_dev[64] = _PATH_DEV "rcd0c";
+ static struct ioc_vol drv_vol_saved;
+ static struct ioc_vol drv_vol;
+ 

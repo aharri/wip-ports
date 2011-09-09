@@ -1,0 +1,39 @@
+$OpenBSD$
+--- Makefile.orig	Sat Jul  4 22:43:49 2009
++++ Makefile	Sat May 21 00:21:01 2011
+@@ -127,7 +127,7 @@ NQ_W32_COMMON_LIBS = wsock32 winmm dxguid
+ NQ_W32_SW_LIBS = mgllt ddraw
+ NQ_W32_GL_LIBS = opengl32 comctl32
+ 
+-NQ_UNIX_COMMON_LIBS = m X11 Xext Xxf86dga Xxf86vm
++NQ_UNIX_COMMON_LIBS = m X11 Xext Xxf86dga Xxf86vm sndio
+ NQ_UNIX_GL_LIBS = GL
+ 
+ NQ_W32_SW_LFLAGS  := $(patsubst %,-l%,$(NQ_W32_SW_LIBS) $(NQ_W32_COMMON_LIBS))
+@@ -438,7 +438,7 @@ NQ_UNIX_C_OBJS = \
+ 	cd_$(UNIX).o	\
+ 	net_udp.o	\
+ 	net_bsd.o	\
+-	snd_linux.o	\
++	snd_sndio.o	\
+ 	sys_linux.o	\
+ 	x11_core.o	\
+ 	in_x11.o
+@@ -680,7 +680,7 @@ QW_UNIX_SV_SHARED_C_OBJS = \
+ QW_UNIX_C_OBJS = \
+ 	$(QW_UNIX_SV_SHARED_C_OBJS) \
+ 	cd_$(UNIX).o	\
+-	snd_linux.o	\
++	snd_sndio.o	\
+ 	sys_linux.o	\
+ 	in_x11.o	\
+ 	x11_core.o
+@@ -832,7 +832,7 @@ QW_W32_COMMON_LIBS = wsock32 dxguid winmm
+ QW_W32_SW_LIBS = mgllt
+ QW_W32_GL_LIBS = opengl32 comctl32
+ 
+-QW_UNIX_COMMON_LIBS = m X11 Xext Xxf86dga Xxf86vm
++QW_UNIX_COMMON_LIBS = m X11 Xext Xxf86dga Xxf86vm sndio
+ QW_UNIX_GL_LIBS = GL
+ 
+ QW_W32_SW_LFLAGS  := $(patsubst %,-l%,$(QW_W32_SW_LIBS) $(QW_W32_COMMON_LIBS))
