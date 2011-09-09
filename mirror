@@ -46,6 +46,8 @@ comm -3 "$ALL" "$DELETED" > "$MODIFIED"
 rsync -av --files-from="$MODIFIED" . "$MYSTUFF"
 
 cd "${MYSTUFF}"
+
+cat "$MODIFIED" | xargs -r git add
 cat "$DELETED" | xargs -r rm -f
 
 git commit -a -F "$MSG"
