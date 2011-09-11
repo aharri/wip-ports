@@ -1,0 +1,2 @@
+@comment $OpenBSD$
+@lib lib/libchipmunk.so.${LIBchipmunk_VERSION}
