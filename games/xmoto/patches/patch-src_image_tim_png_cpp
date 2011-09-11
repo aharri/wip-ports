@@ -1,0 +1,11 @@
+$OpenBSD$
+--- src/image/tim_png.cpp.orig	Sat Sep 10 22:36:28 2011
++++ src/image/tim_png.cpp	Sat Sep 10 22:37:51 2011
+@@ -24,6 +24,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
+  */
+ #include <stdio.h>
+ #include <string.h>
++#include <zlib.h>
+ #include "tim.h"
+ #include "png.h"
+ 
