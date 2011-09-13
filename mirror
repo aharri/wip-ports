@@ -51,3 +51,7 @@ cat "$MODIFIED" | xargs -r git add
 cat "$DELETED" | xargs -r rm -f
 
 git commit -a -F "$MSG"
+
+# Update README
+cp -f README.inc README
+find * -name Makefile | xargs -n 1 dirname >> README

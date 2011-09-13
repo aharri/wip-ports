@@ -1,0 +1,19 @@
+List of ports:
+
+archivers/gnugzip
+cad/coin3d
+cad/freecad
+devel/libchipmunk
+games/abuse
+games/aquaria
+games/chromium-bsu
+games/eduke32
+games/quake
+games/tkb
+games/tyrquake
+games/xmoto
+lang/kaffe
+net/pktstat
+net/rsyncrypto
+x11/kde/utils3
+x11/soqt
