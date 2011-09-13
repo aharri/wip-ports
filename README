@@ -13,7 +13,6 @@ games/tkb
 games/tyrquake
 games/xmoto
 lang/kaffe
-net/pktstat
 net/rsyncrypto
 x11/kde/utils3
 x11/soqt
