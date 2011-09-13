@@ -1,0 +1,16 @@
+Coin3D is a high-level, retained-mode toolkit for effective 3D
+graphics development.
+
+Main features of the Coin3D package
+
+    Coin, the core 3D rendering library
+    Generic GLSL Shader Support
+    Generic Shadow Rendering Functionality
+    Geographical Data Support
+    Multithreading Support
+    Hard-copy vector output in PostScript format
+    TrueType font support for annotations (2D and 3D)
+    3D sound support
+    3D textures, multi-textures, bump mapping, Big Image
+    File import/export libraries
+    Plugin for Qt Designer (QWidget)

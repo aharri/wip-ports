@@ -1,0 +1,2 @@
+@comment $OpenBSD$
+@lib lib/libCoin.so.${LIBCoin_VERSION}
