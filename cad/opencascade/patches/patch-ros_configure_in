@@ -1,0 +1,22 @@
+$OpenBSD$
+--- ros/configure.in.orig	Tue Sep 13 23:01:49 2011
++++ ros/configure.in	Tue Sep 13 23:02:34 2011
+@@ -64,14 +64,15 @@ AC_CHECK_HEADERS(sys/filio.h sys/mman.h libc.h)
+ #-----------------------------------------------------------------------------
+ AC_CHECK_HEADER([pthread.h],[],[AC_MSG_ERROR([Posix threads required])])
+ AC_CHECK_LIB([pthread],[pthread_create],[],[AC_MSG_ERROR([Posix threads required])])
+-CSF_ThreadLibs_LIB=-lpthread
++CSF_ThreadLibs_LIB=-pthread
+ AC_SUBST(CSF_ThreadLibs_LIB)
+ 
+ #-----------------------------------------------------------------------------
+ # dl library is required
+ #-----------------------------------------------------------------------------
+-AC_CHECK_LIB([dl],[dlopen],[],[AC_MSG_ERROR([dl library is required])])
+-CSF_SOCKETLibs_LIB=-ldl
++#AC_CHECK_LIB([dl],[dlopen],[],[AC_MSG_ERROR([dl library is required])])
++#CSF_SOCKETLibs_LIB=-ldl
++CSF_SOCKETLibs_LIB=
+ 
+ #------------------------------------------------------------------------------
+ # Get Tcl and TK configuration information from tclConfig.sh.
