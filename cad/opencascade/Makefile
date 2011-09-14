@@ -70,7 +70,6 @@ LIB_DEPENDS =		graphics/freeimage \
 # unless there is a really good reason not to.
 USE_LIBTOOL =		Yes
 CONFIGURE_STYLE =	autoconf dest
-#CONFIGURE_SCRIPT =	??? (if other than configure)
 CONFIGURE_ARGS =	--with-freeimage=${PREFIX} \
 			--with-tcl="${MODTCL_LIBDIR}" \
 			--with-tk="${MODTK_LIBDIR}" \
@@ -95,7 +94,6 @@ CFLAGS =		-I${X11BASE}/include
 #-I${PREFIX}/include
 LDFLAGS =		-L${X11BASE}/lib -lm
 #MAKE_FILE =		???
-#PKG_ARCH =		??? (* for arch-independent packages)
 #WRKDIST =		??? if other than ${WRKDIR}/${DISTNAME}
 #WRKSRC =		??? if other than ${WRKDIST}
 WRKDIST =		${WRKDIR}

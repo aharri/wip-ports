@@ -27,14 +27,12 @@ MASTER_SITES =		http://ftp.coin3d.org/coin/src/all/
 
 #MAKE_FLAGS =		
 #MAKE_ENV =		???
-#FAKE_FLAGS =		???
 
 #SEPARATE_BUILD =	simple (build in a directory other than WRKSRC)
 #SEPARATE_BUILD =	flavored (distinct flavors may share a common WRKSRC)
 #USE_GROFF =		Yes
 USE_LIBTOOL =		Yes
 CONFIGURE_STYLE =	gnu
-#CONFIGURE_SCRIPT =	??? (if other than configure)
 #CONFIGURE_ARGS =	--enable-system-expat=no
 #CONFIGURE_ENV =	???
 
@@ -42,6 +40,8 @@ CONFIGURE_STYLE =	gnu
 #AUTOMAKE_VERSION =	??? (defaults to 1.4)
 # config.guess and others are copied here
 #MODGNU_CONFIG_GUESS_DIRS = ??? (defaults to ${WRKSRC}
+
+NO_REGRESS =		Yes
 
 CFLAGS =		-DCOIN_INTERNAL \
 			-DCOIN_DEBUG=0 \
@@ -54,6 +54,5 @@ LDFLAGS =		-L${X11BASE}/lib
 
 #ALL_TARGET =		???
 #INSTALL_TARGET =	???
-REGRESS_TARGET =	check
 
 .include <bsd.port.mk>
