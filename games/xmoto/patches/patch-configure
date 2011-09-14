@@ -1,0 +1,12 @@
+$OpenBSD$
+--- configure.orig	Fri Apr  1 20:50:19 2011
++++ configure	Sun Sep 11 21:26:53 2011
+@@ -12074,6 +12074,8 @@ $as_echo "$gt_source" >&6; }
+   fi
+ 
+   if test "$USE_NLS" = "yes"; then
++       LIBINTL=$LTLIBINTL
++       INTLLIBS=$LTLIBINTL
+ 
+     if test "$gt_use_preinstalled_gnugettext" = "yes"; then
+       if { eval "gt_val=\$$gt_func_gnugettext_libintl"; test "$gt_val" = "yes"; }; then
