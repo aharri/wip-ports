@@ -1,12 +1,15 @@
 # $OpenBSD$
 
+USE_SYSTRACE =		Yes
+
 #ONLY_FOR_ARCHS =	???
 #NOT_FOR_ARCHS =	???
 #SHARED_ONLY =		???
 
 COMMENT =		3D modeling & numerical simulation
-DISTNAME =		OpenCASCADE651
-PKGNAME =		opencascade-6.5.1
+V =			6.5.1
+DISTNAME =		OpenCASCADE${V:S/.//g}
+PKGNAME =		opencascade-$V
 
 #SHARED_LIBS =		???
 CATEGORIES =		cad devel
@@ -22,9 +25,7 @@ PERMIT_DISTFILES_FTP =	Unclear
 
 #WANTLIB =		???
 
-FETCH_MANUALLY +=	"You must fetch ${DISTNAME}${EXTRACT_SUFX}"
-FETCH_MANUALLY +=	"from ${HOMEPAGE}"
-#MASTER_SITES =		
+MASTER_SITES =		http://files.opencascade.com/OCCT/OCC_$V_release/
 #MASTER_SITES =		${HOMEPAGE}
 #MASTER_SITES =		${MASTER_SITE_SOURCEFORGE:=subdir/}
 #MASTER_SITES =		${MASTER_SITE_foo:=subdir/}
@@ -62,8 +63,8 @@ FETCH_MANUALLY +=	"from ${HOMEPAGE}"
 #USE_GROFF =		Yes
 # Programs that uses libtool should use this option,
 # unless there is a really good reason not to.
-#USE_LIBTOOL =		Yes
-CONFIGURE_STYLE =	autoconf
+USE_LIBTOOL =		Yes
+CONFIGURE_STYLE =	autoconf dest
 #CONFIGURE_SCRIPT =	??? (if other than configure)
 #CONFIGURE_ARGS +=	${CONFIGURE_SHARED}
 #CONFIGURE_ENV =	???
@@ -74,22 +75,14 @@ AUTOMAKE_VERSION =	1.7
 # config.guess and others are copied here
 #MODGNU_CONFIG_GUESS_DIRS = ??? (defaults to ${WRKSRC}
 
-# Is the build automagic or is it interactive
-#
-#IS_INTERACTIVE =		Yes
 #REGRESS_IS_INTERACTIVE =	Yes
 
-# Things that we don't want to do for this port/package
-# Generally, DON'T set anything to No if it's not needed.
-# The time gained is not worth it.
-#
-#NO_BUILD =		Yes
 #NO_REGRESS =		Yes
 
 # Overrides for default values
 #
-#CFLAGS =		???
-#LDFLAGS =		???
+CFLAGS =		"-I${X11BASE}/include"
+LDFLAGS =		"-L${X11BASE}/lib"
 #MAKE_FILE =		???
 #PKG_ARCH =		??? (* for arch-independent packages)
 #WRKDIST =		??? if other than ${WRKDIR}/${DISTNAME}
@@ -102,9 +95,5 @@ WRKSRC =		${WRKDIST}/ros
 #ALL_TARGET =		???
 #INSTALL_TARGET =	???
 #REGRESS_TARGET =	???
-
-#do-extract:
-#	mkdir "${WRKDIR}/${DISTNAME}"
-#	cd "${WRKDIST}" && gzip -dc ${FULLDISTDIR}/${EXTRACT_ONLY} | tar xf -
 
 .include <bsd.port.mk>
