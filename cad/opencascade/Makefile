@@ -44,10 +44,15 @@ MASTER_SITES =		http://files.opencascade.com/OCCT/OCC_$V_release/
 
 # Dependencies
 #
-#MODULES =		???
+
+MODULES =		lang/tcl \
+			x11/tk
 #BUILD_DEPENDS =	???
 #RUN_DEPENDS =		???
-#LIB_DEPENDS =		???
+LIB_DEPENDS =		graphics/freeimage \
+			graphics/ftgl \
+			${MODTCL_LIB_DEPENDS} \
+			${MODTK_LIB_DEPENDS}
 #REGRESS_DEPENDS =	???
 
 #MAKE_FLAGS =		???
@@ -66,12 +71,17 @@ MASTER_SITES =		http://files.opencascade.com/OCCT/OCC_$V_release/
 USE_LIBTOOL =		Yes
 CONFIGURE_STYLE =	autoconf dest
 #CONFIGURE_SCRIPT =	??? (if other than configure)
-#CONFIGURE_ARGS +=	${CONFIGURE_SHARED}
-#CONFIGURE_ENV =	???
+CONFIGURE_ARGS =	--with-freeimage=${PREFIX} \
+			--with-tcl="${MODTCL_LIBDIR}" \
+			--with-tk="${MODTK_LIBDIR}" \
+			--with-freetype="${X11BASE}" \
+			--with-ftgl="${PREFIX}"
+CONFIGURE_ENV =		CPPFLAGS="${CFLAGS}" \
+			LDFLAGS="${LDFLAGS}"
 
 # for gnu stuff
 AUTOCONF_VERSION =	2.57
-AUTOMAKE_VERSION =	1.7
+#AUTOMAKE_VERSION =	1.8
 # config.guess and others are copied here
 #MODGNU_CONFIG_GUESS_DIRS = ??? (defaults to ${WRKSRC}
 
@@ -81,8 +91,9 @@ AUTOMAKE_VERSION =	1.7
 
 # Overrides for default values
 #
-CFLAGS =		"-I${X11BASE}/include"
-LDFLAGS =		"-L${X11BASE}/lib"
+CFLAGS =		-I${X11BASE}/include
+#-I${PREFIX}/include
+LDFLAGS =		-L${X11BASE}/lib -lm
 #MAKE_FILE =		???
 #PKG_ARCH =		??? (* for arch-independent packages)
 #WRKDIST =		??? if other than ${WRKDIR}/${DISTNAME}
