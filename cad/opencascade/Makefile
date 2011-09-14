@@ -79,31 +79,6 @@ AUTOMAKE_VERSION =	1.7
 #IS_INTERACTIVE =		Yes
 #REGRESS_IS_INTERACTIVE =	Yes
 
-# Assume you have one multiple choice flavor: 1 2 3 and switches a b.
-# You would write
-#
-#FLAVORS =	1 2 3 a b
-#FLAVOR ?=
-# grab multiple choice value
-#CHOICE = ${FLAVOR:L:Na:Nb}
-# check that CHOICE is 1 OR 2 OR 3, or error out
-#.if ${CHOICE} == "1"
-# code for 1
-#.elif ${CHOICE} == "2"
-# code for 2
-#.elif ${CHOICE} == "3"
-# code for 3
-#.else
-#ERRORS += "Fatal: Conflicting flavor: ${FLAVOR}"
-#.endif
-# check for switches
-#.if ${FLAVOR:L:Ma}
-# code for a
-#.endif
-#.if ${FLAVOR:L:Mb}
-# code for b
-#.endif
-
 # Things that we don't want to do for this port/package
 # Generally, DON'T set anything to No if it's not needed.
 # The time gained is not worth it.

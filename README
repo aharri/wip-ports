@@ -3,6 +3,7 @@ List of ports:
 archivers/gnugzip
 cad/coin3d
 cad/freecad
+cad/opencascade
 devel/libchipmunk
 games/abuse
 games/aquaria
