@@ -1,0 +1,12 @@
+$OpenBSD$
+--- Makefile.fip.orig	Sun Aug 26 05:57:54 2007
++++ Makefile.fip	Wed Sep 14 21:58:17 2011
+@@ -24,7 +24,7 @@ CXXFLAGS = $(COMPILERFLAGS) -Wno-ctor-dtor-privacy $(I
+ 
+ TARGET  = freeimageplus
+ STATICLIB = lib$(TARGET).a
+-SHAREDLIB = lib$(TARGET)-$(VER_MAJOR).$(VER_MINOR).so
++SHAREDLIB = lib$(TARGET).so.$(LIBfreeimageplus_VERSION)
+ LIBNAME	= lib$(TARGET).so
+ VERLIBNAME = $(LIBNAME).$(VER_MAJOR)
+ HEADER = Source/FreeImage.h
