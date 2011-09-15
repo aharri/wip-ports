@@ -14,6 +14,7 @@ games/tkb
 games/tyrquake
 games/xmoto
 graphics/freeimage
+graphics/ftgl
 lang/kaffe
 net/rsyncrypto
 x11/kde/utils3

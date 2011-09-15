@@ -90,9 +90,9 @@ AUTOCONF_VERSION =	2.57
 
 # Overrides for default values
 #
-CFLAGS =		-I${X11BASE}/include
+CFLAGS =		-I${X11BASE}/include -I${PREFIX}/include
 #-I${PREFIX}/include
-LDFLAGS =		-L${X11BASE}/lib -lm
+LDFLAGS =		-L${X11BASE}/lib -L${PREFIX}/lib -lm
 #MAKE_FILE =		???
 #WRKDIST =		??? if other than ${WRKDIR}/${DISTNAME}
 #WRKSRC =		??? if other than ${WRKDIST}

@@ -38,16 +38,3 @@ $OpenBSD$
  #include <FTGL/FTGLTextureFont.h>
  ], [
  FTGLTextureFont font("");], [
-@@ -517,10 +518,10 @@ else
-   if test "x$HAVE_FREEIMAGE_INC" = "xyes"; then
-     CSF_FreeImagePlus_INCLUDES="-I$freeimage/include -DHAVE_FREEIMAGE"
-     HAVE_FREEIMAGE_LIB=yes
--    AC_MSG_CHECKING([for FreeImage_OpenMemory in -lfreeimageplus])
-+    AC_MSG_CHECKING([for FreeImage_OpenMemory in -lfreeimage])
-     LDFLAGS="-L$freeimage/lib $LDFLAGS"
-     LIBS="$CSF_FreeImagePlus_LIB $LIBS"
--    AC_CHECK_LIB( [freeimageplus], [FreeImage_OpenMemory], [CSF_FreeImagePlus_LIB="-L$freeimage/lib -lfreeimageplus"], [HAVE_FREEIMAGE_LIB=no] )
-+    AC_CHECK_LIB( [freeimage], [FreeImage_OpenMemory], [CSF_FreeImagePlus_LIB="-L$freeimage/lib -lfreeimage"], [HAVE_FREEIMAGE_LIB=no] )
-     else
-     HAVE_FREEIMAGE_LIB=no
-   fi
