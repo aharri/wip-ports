@@ -13,6 +13,7 @@ games/quake
 games/tkb
 games/tyrquake
 games/xmoto
+graphics/freeimage
 lang/kaffe
 net/rsyncrypto
 x11/kde/utils3
