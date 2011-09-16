@@ -1,0 +1,16 @@
+$OpenBSD$
+--- ros/src/STEPConstruct/STEPConstruct_AP203Context.cxx.orig	Fri Sep 16 01:07:38 2011
++++ ros/src/STEPConstruct/STEPConstruct_AP203Context.cxx	Fri Sep 16 01:29:32 2011
+@@ -103,7 +103,11 @@ Handle(StepBasic_DateAndTime) STEPConstruct_AP203Conte
+ 
+     Handle(StepBasic_CoordinatedUniversalTimeOffset) zone = 
+       new StepBasic_CoordinatedUniversalTimeOffset;
+-    Standard_Integer shift = Standard_Integer(timezone);
++    time_t rawtime;
++    struct tm *tm;
++    time(&rawtime);
++    tm = gmtime(&rawtime);
++    Standard_Integer shift = Standard_Integer(tm->tm_gmtoff);
+     Standard_Integer shifth = abs ( shift ) / 3600;
+     Standard_Integer shiftm = ( abs ( shift ) - shifth * 3600 ) / 60;
+     StepBasic_AheadOrBehind sense = ( shift >0 ? StepBasic_aobBehind : 
