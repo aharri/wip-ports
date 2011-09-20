@@ -1,0 +1,11 @@
+$OpenBSD$
+--- simulation/metaserver.cpp.orig	Fri Sep 28 21:37:23 2007
++++ simulation/metaserver.cpp	Wed Oct 24 23:38:49 2007
+@@ -20,6 +20,7 @@
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <netdb.h>
++#include <unistd.h>
+ 
+ #ifdef HAVE_CONFIG_H
+ #include "config.h"

@@ -1,0 +1,12 @@
+$OpenBSD$
+--- configure.ac.orig	Tue Sep 20 19:51:37 2011
++++ configure.ac	Tue Sep 20 19:51:39 2011
+@@ -231,7 +231,7 @@ AC_CACHE_CHECK(whether $CC accepts -finput-charset and
+ CFLAGS=$OLDCFLAGS
+ AC_LANG_POP(C)
+ 
+-if test $cc_charset_setting = yes; then
++if test "x$cc_charset_setting" = "xyes"; then
+   CFLAGS="-finput-charset=ISO-8859-1 -fexec-charset=ISO-8859-1 $CFLAGS"
+   CXXFLAGS="-finput-charset=ISO-8859-1 -fexec-charset=ISO-8859-1 $CXXFLAGS"
+ fi
