@@ -24,10 +24,10 @@ USE_SYSTRACE=	Yes
 
 CONFIGURE_STYLE=autoconf
 CONFIGURE_ENV=	CPPFLAGS="-I${X11BASE}/include -I${LOCALBASE}/include `sdl-config --cflags`" \
-		LDFLAGS="-lpthread -lossaudio -L${X11BASE}/lib -L${LOCALBASE}/lib"
+		LDFLAGS="-pthread -L${X11BASE}/lib -L${LOCALBASE}/lib"
 CONFIGURE_ARGS =	--with-openal
 
-WANTLIB += GL SDL SDL_image alut c m ogg openal ossaudio pthread
+WANTLIB += GL SDL SDL_image alut c iconv intl m ogg openal pthread
 WANTLIB += stdc++ vorbis vorbisfile
 
 MODULES=	devel/gettext
