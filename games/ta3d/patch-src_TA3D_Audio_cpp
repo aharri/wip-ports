@@ -1,0 +1,237 @@
+$OpenBSD$
+--- src/TA3D_Audio.cpp.orig	Sat Mar 15 16:29:11 2008
++++ src/TA3D_Audio.cpp	Sat Mar 22 13:02:19 2008
+@@ -195,6 +195,7 @@ void cAudio::SavePlayList( void )
+ 
+ /* private */void cAudio::ShutdownAudio( bool PurgeLoadedData )
+ {
++#if 0
+ 	if( m_FMODRunning ) // only execute stop if we are running.
+ 		StopMusic();
+ 
+@@ -229,10 +230,12 @@ void cAudio::SavePlayList( void )
+ 
+ 		m_FMODRunning = false;
+ 	}
++#endif
+ }
+ 
+ /* private */bool cAudio::StartUpAudio( void )
+ {
++#if 0
+ 	uint32 FMODVersion;
+ 
+ 	m_lpFMODMusicsound = NULL;
+@@ -317,6 +320,7 @@ if( m_lpFMODSystem->init( 32, FMOD_INIT_NORMAL | FMOD_
+ #endif
+ 
+ 	return true;
++#endif
+ }
+ 
+ /* public */cAudio::~cAudio()
+@@ -328,6 +332,7 @@ if( m_lpFMODSystem->init( 32, FMOD_INIT_NORMAL | FMOD_
+ 
+ /* public */void cAudio::StopMusic( void )
+ {
++#if 0
+ 	if( !m_FMODRunning )
+ 		return;
+ 
+@@ -345,6 +350,7 @@ if( m_lpFMODSystem->init( 32, FMOD_INIT_NORMAL | FMOD_
+ 			m_lpFMODMusicchannel = NULL;
+ 		LeaveCS();
+ 	}
++#endif
+ }
+ 
+ /* private */void cAudio::PurgePlayList( void )
+@@ -369,6 +375,7 @@ if( m_lpFMODSystem->init( 32, FMOD_INIT_NORMAL | FMOD_
+ 
+ /* public */void cAudio::TogglePauseMusic( void )
+ {
++#if 0
+ 	if( m_FMODRunning )
+ 		return;
+ 
+@@ -390,10 +397,12 @@ if( m_lpFMODSystem->init( 32, FMOD_INIT_NORMAL | FMOD_
+ 	m_lpFMODMusicchannel->setPaused( !paused );
+ 
+ #endif
++#endif
+ }
+ 
+ /* public */void cAudio::PauseMusic( void )
+ {
++#if 0
+ 	if( m_FMODRunning )
+ 		return;
+ 
+@@ -405,6 +414,7 @@ if( m_lpFMODSystem->init( 32, FMOD_INIT_NORMAL | FMOD_
+ #else
+ 	m_lpFMODMusicchannel->setPaused( true );
+ #endif
++#endif
+ }
+ 
+ /* private */const String cAudio::SelectNextMusic( void )
+@@ -478,6 +488,7 @@ if( m_lpFMODSystem->init( 32, FMOD_INIT_NORMAL | FMOD_
+ 
+ /* private */void cAudio::PlayMusic( const String &FileName )
+ {
++#if 0
+ 	StopMusic();
+ 
+ 	if( !m_FMODRunning )
+@@ -535,10 +546,12 @@ if( m_lpFMODSystem->init( 32, FMOD_INIT_NORMAL | FMOD_
+ 	m_lpFMODMusicchannel->setVolume( 1.0f );
+ 
+ #endif
++#endif
+ }
+ 
+ /* private */void cAudio::PlayMusic()
+ {
++#if 0
+ 	if( !m_FMODRunning )
+ 		return;
+ 
+@@ -572,6 +585,7 @@ if( m_lpFMODSystem->init( 32, FMOD_INIT_NORMAL | FMOD_
+ 	}
+ 
+ 	PlayMusic( SelectNextMusic() );
++#endif
+ }
+ 
+ 
+@@ -583,16 +597,20 @@ if( m_lpFMODSystem->init( 32, FMOD_INIT_NORMAL | FMOD_
+ 			const float RolloffFactor ) :
+ 		m_FMODRunning( false ),
+ 		m_InBattle( false ),
++#if 0
+ 		m_lpFMODMusicsound( NULL ),
+ 		m_lpFMODMusicchannel( NULL ),
++#endif
+ 		m_curPlayIndex( -1 ),
+ 		cTAFileParser(),
+ 		m_Playlist()
+ {
+ 	m_min_ticks = 500;
+ 
++#if 0
+ 	basic_sound = NULL;
+ 	basic_channel = NULL;
++#endif
+ 
+ 	StartUpAudio();
+ 
+@@ -604,16 +622,19 @@ if( m_lpFMODSystem->init( 32, FMOD_INIT_NORMAL | FMOD_
+ 	if( !m_FMODRunning )
+ 		return;
+ 
++#if 0
+ #ifdef TA3D_PLATFORM_MINGW
+ 	FMOD_System_Set3DSettings( m_lpFMODSystem, DopplerFactor, DistanceFactor, RolloffFactor );
+ #else
+ 	m_lpFMODSystem->set3DSettings( DopplerFactor, DistanceFactor, RolloffFactor );
+ #endif
++#endif
+ }
+ 
+ // Begin sound managing routines.
+ void cAudio::SetListenerPos( const VECTOR3D *vec )
+ {
++#if 0
+ 	if( !m_FMODRunning )
+ 		return;
+ 
+@@ -627,10 +648,12 @@ void cAudio::SetListenerPos( const VECTOR3D *vec )
+ #else
+ 	m_lpFMODSystem->set3DListenerAttributes( 0, &pos, &vel, &forward, &up );
+ #endif
++#endif
+ }
+ 
+ void cAudio::Update3DSound( void )
+ {
++#if 0
+ 	if( !m_FMODRunning ) {
+ 		EnterCS();
+ 
+@@ -712,6 +735,7 @@ LeaveCS();
+ 		PlayMusic();
+ 
+ LeaveCS();
++#endif
+ }
+ 
+ uint32 cAudio::InterfaceMsg( const lpcImsg msg )
+@@ -740,6 +764,7 @@ uint32 cAudio::InterfaceMsg( const lpcImsg msg )
+ 
+ void cAudio::PlaySoundFileNow( const String &Filename )				// Loads and play a sound
+ {
++#if 0
+ #ifdef TA3D_PLATFORM_MINGW
+ 	if( basic_sound )
+ 		FMOD_Sound_Release( basic_sound );
+@@ -774,10 +799,12 @@ void cAudio::PlaySoundFileNow( const String &Filename 
+ 
+ 		free(data);
+ 		}
++#endif
+ }
+ 
+ void cAudio::StopSoundFileNow()				// Stop playing
+ {
++#if 0
+ #ifdef TA3D_PLATFORM_MINGW
+ 	if( basic_sound )
+ 		FMOD_Sound_Release( basic_sound );
+@@ -788,11 +815,13 @@ void cAudio::StopSoundFileNow()				// Stop playing
+ 
+ 	basic_sound = NULL;
+ 	basic_channel = NULL;
++#endif
+ }
+ 
+ bool cAudio::LoadSound( const String &Filename, const bool LoadAs3D,
+ 						const float MinDistance, const float MaxDistance )
+ {
++#if 0
+ 	String szWav = Lowercase( Filename ); // copy string to szWav so we can work with it.
+ 
+ 	I_Msg( TA3D::TA3D_IM_DEBUG_MSG, (char*)format("loading sound file %s\n",(char *)szWav.c_str()).c_str(), NULL, NULL );
+@@ -892,6 +921,7 @@ bool cAudio::LoadSound( const String &Filename, const 
+ 	m_SoundList->InsertOrUpdate( szWav, m_Sound );
+ 
+ 	return true;
++#endif
+ }
+ 
+ void cAudio::LoadTDFSounds( const bool allSounds )
+@@ -934,6 +964,7 @@ void cAudio::PurgeSounds( void )
+ // Play sound directly from our sound pool
+ void cAudio::PlaySound( const String &Filename, const VECTOR3D *vec )
+ {
++#if 0
+ 	if( vec != NULL && game_cam != NULL && ((VECTOR)(*vec - game_cam->RPos)).Sq() > 360000.0f )	return;		// If the source is too far, does not even think about playing it!
+ 
+ //	Console->AddEntry("playing %s", (char*)Filename.c_str());
+@@ -984,6 +1015,7 @@ LeaveCS();
+ 	WorkList.push_back( m_Work );
+ 
+ LeaveCS();
++#endif
+ }
+ 
+ void cAudio::PlayTDFSoundNow( const String &Key, const VECTOR3D *vec )		// Wrapper to PlayTDFSound + Update3DSound
+@@ -1036,5 +1068,9 @@ void cAudio::PlayTDFSound( const String &Key1,  const 
+ 
+ bool cAudio::IsFMODRunning()
+ {
++#if 0
+ 	return m_FMODRunning;
++#else
++	return -1;
++#endif
+ }

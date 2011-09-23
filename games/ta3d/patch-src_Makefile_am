@@ -1,0 +1,19 @@
+$OpenBSD$
+--- src/Makefile.am.orig	Sat Mar 15 16:29:11 2008
++++ src/Makefile.am	Sat Mar 22 13:02:19 2008
+@@ -104,9 +104,9 @@ hpiview_SOURCES= \
+ INSTALL=../install-sh
+ 
+ all:
+-	!(test -e ta3d) || mv ta3d ../ta3d-bin
+-	!(test -e ta3d.exe) || mv ta3d.exe ../ta3d-bin.exe
+-	!(test -e hpiview) || mv hpiview ../
+-	!(test -e hpiview.exe) || mv hpiview.exe ../
+-	!(test -e 3dmeditor) || mv 3dmeditor ../3dmeditor-bin
+-	!(test -e 3dmeditor.exe) || mv 3dmeditor.exe ../
++	-test -e ta3d && mv ta3d ../ta3d-bin
++	-test -e ta3d.exe && mv ta3d.exe ../ta3d-bin.exe
++	-test -e hpiview && mv hpiview ../
++	-test -e hpiview.exe && mv hpiview.exe ../
++	-test -e 3dmeditor && mv 3dmeditor ../3dmeditor-bin
++	-test -e 3dmeditor.exe && mv 3dmeditor.exe ../

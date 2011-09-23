@@ -1,0 +1,12 @@
+$OpenBSD$
+--- configure.ac.orig	Sat Mar 15 16:30:29 2008
++++ configure.ac	Sat Mar 22 13:02:19 2008
+@@ -20,7 +20,7 @@ AC_CHECK_LIB([GLU], [main])
+ # Check for zlib:
+ AC_CHECK_LIB([z], [main])
+ # Check for fmod presence ( choose 32 or 64 bits version depending on the platform ):
+-AC_CHECK_LIB([fmodex], [main],, AC_CHECK_LIB([fmodex64], [main],,AC_MSG_ERROR([FMODex isn't installed on your system!!]) ) )
++# AC_CHECK_LIB([fmodex], [main],, AC_CHECK_LIB([fmodex64], [main],,AC_MSG_ERROR([FMODex isn't installed on your system!!]) ) )
+ # Check for allegro >= 4.2.0:
+ AM_PATH_ALLEGRO( [4.2.2], , AC_MSG_ERROR(TA3D requires Allegro >= 4.2.2 to be installed))
+ # Check for allegrogl:

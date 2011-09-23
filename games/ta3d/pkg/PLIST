@@ -1,0 +1,4 @@
+@comment $OpenBSD$
+bin/3dmeditor
+bin/hpiview
+bin/ta3d

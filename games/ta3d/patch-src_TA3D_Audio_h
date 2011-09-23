@@ -1,0 +1,71 @@
+$OpenBSD$
+--- src/TA3D_Audio.h.orig	Sat Mar 15 16:29:11 2008
++++ src/TA3D_Audio.h	Sat Mar 22 13:02:20 2008
+@@ -29,9 +29,11 @@
+ 
+ #undef stricmp
+ #if defined TA3D_PLATFORM_LINUX
++#if 0
+ 	#include "tools/linux/FMOD/inc/fmod.hpp"
+ 	#include "tools/linux/FMOD/inc/fmod_errors.h"
+ 	#include "tools/linux/FMOD/inc/wincompat.h"
++#endif
+ #elif defined TA3D_PLATFORM_WINDOWS
+ 	#include "tools/win32/fmod/fmod.hpp"
+ 	#include "tools/win32/fmod/fmod_errors.h"
+@@ -73,6 +75,7 @@ namespace TA3D {
+ 			sint32		m_BattleTunes;      // Number of battle tunes;
+ 			Playlist	m_Playlist;         // Vector of PlayList.
+ 
++#if 0
+ #ifdef TA3D_PLATFORM_MINGW
+ 			FMOD_SYSTEM     *m_lpFMODSystem;
+ 			FMOD_SOUND      *m_lpFMODMusicsound;
+@@ -82,6 +85,7 @@ namespace TA3D {
+ 			FMOD::Sound      *m_lpFMODMusicsound;
+ 			FMOD::Channel    *m_lpFMODMusicchannel;
+ #endif
++#endif
+ 
+ 			sint16			m_curPlayIndex;   // current play index.
+ 			uint32			m_min_ticks;
+@@ -123,13 +127,16 @@ namespace TA3D {
+ 			typedef struct m_SoundListItem
+ 			{
+ 				bool			m_3DSound;
++#if 0
+ #ifdef TA3D_PLATFORM_MINGW
+ 				FMOD_SOUND		*m_SampleHandle;
+ #else
+ 				FMOD::Sound		*m_SampleHandle;
+ #endif
++#endif
+ 				uint32			last_time_played;
+ 
++#if 0
+ 				m_SoundListItem()
+ 				{
+ 					last_time_played = 0;
+@@ -148,6 +155,7 @@ namespace TA3D {
+ 
+ 					m_SampleHandle = NULL;
+ 				}
++#endif
+ 			};
+ 
+ 			typedef struct m_WorkListItem
+@@ -167,12 +175,14 @@ namespace TA3D {
+ 			sint32												fCounter;
+ 			List< m_WorkListItem >								WorkList;			// List to store work to do when entering main thread
+ 
++#if 0
+ #ifdef TA3D_PLATFORM_MINGW
+ 			FMOD_SOUND						*basic_sound;
+ 			FMOD_CHANNEL					*basic_channel;
+ #else
+ 			FMOD::Sound						*basic_sound;
+ 			FMOD::Channel					*basic_channel;
++#endif
+ #endif
+ 
+ 		private:
