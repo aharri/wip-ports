@@ -17,7 +17,6 @@ games/ultimatestunts
 games/gl117
 graphics/freeimage
 graphics/ftgl
-lang/kaffe
 net/rsyncrypto
 x11/kde/utils3
 x11/soqt
