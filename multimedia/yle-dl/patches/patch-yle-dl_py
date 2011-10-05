@@ -1,0 +1,18 @@
+$OpenBSD$
+--- yle-dl.py.orig	Wed Oct  5 13:51:33 2011
++++ yle-dl.py	Wed Oct  5 13:57:19 2011
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!${MODPY_BIN}
+ 
+ """
+ yle-dl - Frontend for rtmpdump-yle, the YLE Areena stream downloader
+@@ -20,7 +20,7 @@ import urlparse
+ import htmlentitydefs
+ import json
+ 
+-RTMPDUMPYLE_BINARY = './rtmpdump-yle'  # @BINARY@ make install replaces this line with the real path
++RTMPDUMPYLE_BINARY = '${TRUEPREFIX}/bin/rtmpdump-yle'  # @BINARY@ make install replaces this line with the real path
+ AREENA_RTMP = 'rtmp://flashk.yle.fi/AreenaServer'
+ AREENA_SWF = 'http://areena.yle.fi/player/Application.swf?build=2'
+ RTMPDUMPYLE_OPTIONS = ['-r', AREENA_RTMP, '-s', AREENA_SWF, '-m', '60']
