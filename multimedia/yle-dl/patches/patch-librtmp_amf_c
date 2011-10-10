@@ -1,0 +1,12 @@
+$OpenBSD$
+--- librtmp/amf.c.orig	Thu Jul 14 12:07:26 2011
++++ librtmp/amf.c	Mon Oct 10 19:02:27 2011
+@@ -1111,7 +1111,7 @@ AMF_AddProp(AMFObject *obj, const AMFObjectProperty *p
+   if (!(obj->o_num & 0x0f))
+     obj->o_props =
+       realloc(obj->o_props, (obj->o_num + 16) * sizeof(AMFObjectProperty));
+-  obj->o_props[obj->o_num++] = *prop;
++  memcpy(&obj->o_props[obj->o_num++], prop, sizeof(AMFObjectProperty));
+ }
+ 
+ int

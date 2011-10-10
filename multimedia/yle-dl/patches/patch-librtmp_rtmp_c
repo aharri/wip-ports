@@ -1,0 +1,30 @@
+$OpenBSD$
+--- librtmp/rtmp.c.orig	Mon Oct 10 19:12:04 2011
++++ librtmp/rtmp.c	Mon Oct 10 19:13:38 2011
+@@ -2318,7 +2318,7 @@ HandleInvoke(RTMP *r, const char *body, unsigned int n
+ {
+   AMFObject obj;
+   AVal method;
+-  int txn;
++  double txn;
+   int ret = 0, nRes;
+   if (body[0] != 0x02)		/* make sure it is a string method name we start with */
+     {
+@@ -2336,7 +2336,7 @@ HandleInvoke(RTMP *r, const char *body, unsigned int n
+ 
+   AMF_Dump(&obj);
+   AMFProp_GetString(AMF_GetProp(&obj, NULL, 0), &method);
+-  txn = (int)AMFProp_GetNumber(AMF_GetProp(&obj, NULL, 1));
++  txn = AMFProp_GetNumber(AMF_GetProp(&obj, NULL, 1));
+   RTMP_Log(RTMP_LOGDEBUG, "%s, server invoking <%s>", __FUNCTION__, method.av_val);
+ 
+   if (r->invokeHook) {
+@@ -2355,7 +2355,7 @@ HandleInvoke(RTMP *r, const char *body, unsigned int n
+       int i;
+ 
+       for (i=0; i<r->m_numCalls; i++) {
+-  	if (r->m_methodCalls[i].num == txn) {
++	if (r->m_methodCalls[i].num == (int)txn) {
+ 	  methodInvoked = r->m_methodCalls[i].name;
+ 	  AV_erase(r->m_methodCalls, &r->m_numCalls, i, FALSE);
+ 	  break;
