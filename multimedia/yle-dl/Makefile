@@ -1,6 +1,6 @@
 # $OpenBSD$
 
-V =			1.4.3
+V =			1.4.4
 COMMENT =		download videos from YLE Areena
 DISTNAME =		rtmpdump-yle-$V
 PKGNAME =		yle-dl-$V
