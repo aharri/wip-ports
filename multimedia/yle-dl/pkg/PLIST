@@ -1,6 +1,0 @@
-@comment $OpenBSD$
-@bin bin/rtmpdump-yle
-bin/yle-dl
-share/doc/yle-dl/
-share/doc/yle-dl/COPYING
-share/doc/yle-dl/README.fi
