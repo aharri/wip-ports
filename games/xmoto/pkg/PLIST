@@ -1,4 +1,4 @@
-@comment $OpenBSD: ports/games/xmoto/pkg/PLIST,v 1.2 2009/09/27 17:20:57 jasper Exp $
+@comment $OpenBSD$
 @bin bin/xmoto
 @man man/man6/xmoto.6
 share/doc/xmoto/

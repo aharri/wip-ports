@@ -1,8 +1,8 @@
-# $OpenBSD: ports/games/xmoto/Makefile,v 1.8 2011/07/08 20:38:02 naddy Exp $
+# $OpenBSD: ports/games/xmoto/Makefile,v 1.9 2011/09/16 09:48:10 espie Exp $
 
 COMMENT =	challenging 2D motocross platform game
 
-V =	 	0.5.7
+V =	 	0.5.8
 DISTNAME =	xmoto-${V}-src
 PKGNAME =	xmoto-${V}
 CATEGORIES =	games
@@ -18,22 +18,24 @@ PERMIT_PACKAGE_FTP =	Yes
 PERMIT_DISTFILES_CDROM =Yes
 PERMIT_DISTFILES_FTP =	Yes
 
-WANTLIB += GL GLU SDL SDL_mixer SDL_net SDL_ttf X11 bz2 c curl iconv jpeg lua m 
-WANTLIB += ode png pthread sqlite3 stdc++ xdg-basedir z
+WANTLIB += GL GLU SDL SDL_mixer SDL_net SDL_ttf X11 bz2 c curl jpeg 
+WANTLIB += lua m ode png pthread sqlite3 stdc++ xdg-basedir xml2 z 
+
 
 MODULES=	devel/gettext
 
-LIB_DEPENDS =	devel/sdl-mixer \
+LIB_DEPENDS =	archivers/bzip2 \
+		databases/sqlite3 \
+		devel/ode \
+		devel/sdl-mixer \
 		devel/sdl-net \
 		devel/sdl-ttf \
-		archivers/bzip2 \
-		net/curl \
 		graphics/jpeg \
-		x11/libxdg-basedir \
-		devel/ode \
-		lang/lua \
 		graphics/png \
-		databases/sqlite3
+		lang/lua \
+		net/curl \
+		textproc/libxml \
+		x11/libxdg-basedir
 
 USE_GMAKE =		Yes
 USE_GROFF =		Yes

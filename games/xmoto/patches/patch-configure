@@ -1,7 +1,7 @@
 $OpenBSD$
---- configure.orig	Fri Apr  1 20:50:19 2011
-+++ configure	Sun Sep 11 21:26:53 2011
-@@ -12074,6 +12074,8 @@ $as_echo "$gt_source" >&6; }
+--- configure.orig	Sun May  8 08:16:07 2011
++++ configure	Sun Oct 30 11:55:30 2011
+@@ -12359,6 +12359,8 @@ $as_echo "$gt_source" >&6; }
    fi
  
    if test "$USE_NLS" = "yes"; then
