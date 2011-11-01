@@ -6,6 +6,9 @@ cad/freecad
 cad/opencascade
 devel/libchipmunk
 games/openxcom
+games/megaglest/base
+games/megaglest/data
+games/megaglest
 games/gl117
 games/quake
 games/ta3d
