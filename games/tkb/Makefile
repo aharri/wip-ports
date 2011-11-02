@@ -6,7 +6,7 @@
 
 COMMENT-main =		Tapan Kaikki Bloodshed: top view shooting game
 COMMENT-editor =	editor for Tapan Kaikki Bloodshed
-V =			4.08.20110831
+V =			4.08.20111102
 DISTNAME =		tkb-$V
 PKGNAME-main =		tkb-$V
 PKGNAME-editor =	tkb-editor-$V
@@ -24,15 +24,17 @@ PERMIT_PACKAGE_FTP =	Yes
 PERMIT_DISTFILES_CDROM =Yes
 PERMIT_DISTFILES_FTP =	Yes
 
-WANTLIB-main =		SDL SDL_image SDL_net c jpeg m png pthread stdc++ \
-			tiff z FLAC SDL_mixer mikmod ogg smpeg vorbis vorbisfile 
-WANTLIB-editor =	GL X11 Xcomposite Xcursor Xdamage Xext \
-			Xfixes Xi Xinerama Xrandr Xrender expat \
-			fontconfig freetype iconv pixman-1 pthread-stubs xcb \
-			xcb-render xcb-shm SDL SDL_image SDL_net atk-1.0 c cairo \
-			gdk-x11-2.0 gdk_pixbuf-2.0 gio-2.0 glib-2.0 gmodule-2.0 \
-			gobject-2.0 gthread-2.0 gtk-x11-2.0 intl jpeg m pango-1.0 \
-			pangocairo-1.0 pangoft2-1.0 png pthread stdc++ tiff z
+WANTLIB-main += FLAC SDL SDL_image SDL_mixer SDL_net c jpeg m mikmod
+WANTLIB-main += ogg png pthread smpeg stdc++ tiff vorbis vorbisfile
+WANTLIB-main += z
+
+WANTLIB-editor += GL SDL SDL_image SDL_net X11 Xcomposite Xcursor Xdamage
+WANTLIB-editor += Xext Xfixes Xi Xinerama Xrandr Xrender atk-1.0 c cairo
+WANTLIB-editor += expat fontconfig freetype gdk-x11-2.0 gdk_pixbuf-2.0
+WANTLIB-editor += gio-2.0 glib-2.0 gmodule-2.0 gobject-2.0 gthread-2.0
+WANTLIB-editor += gtk-x11-2.0 iconv intl jpeg m pango-1.0 pangocairo-1.0
+WANTLIB-editor += pangoft2-1.0 pixman-1 png pthread pthread-stubs stdc++
+WANTLIB-editor += tiff xcb xcb-render xcb-shm z
 
 #MASTER_SITES =		http://www.errorfree.eu.org/games/
 MASTER_SITES =		http://openbsd.fi/dist/
@@ -44,10 +46,15 @@ LIB_DEPENDS-main =	devel/sdl \
 			audio/libmikmod \
 			devel/sdl-mixer \
 			devel/sdl-net
-LIB_DEPENDS-editor =	devel/sdl \
+LIB_DEPENDS-editor =	devel/atk \
+			devel/glib2 \
+			devel/pango \
+			devel/sdl \
 			devel/sdl-image \
 			x11/gtk+2
 RUN_DEPENDS-editor =	${FULLPKGNAME-main}:${BUILD_PKGPATH},-main
+
+MAKE_ENV =		CXX="${CXX}"
 
 NO_REGRESS =		Yes
 
