@@ -1,7 +1,7 @@
 # $OpenBSD: ports/games/openxcom/Makefile,v 1.2 2011/07/18 10:57:01 jasper Exp $
 
 COMMENT =		open source reimplementation of the original X-Com
-DISTNAME =		openxcom-20111030
+DISTNAME =		openxcom-20111103
 CATEGORIES =		games x11
 
 HOMEPAGE =		http://openxcom.ninex.info/
