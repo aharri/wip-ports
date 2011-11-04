@@ -1,0 +1,21 @@
+$OpenBSD$
+--- src/tls.c.orig	Thu Nov  3 22:08:45 2011
++++ src/tls.c	Thu Nov  3 22:08:49 2011
+@@ -44,7 +44,7 @@
+ #include "allegro5/internal/aintern_fshook.h"
+ #include "allegro5/internal/aintern_tls.h"
+ 
+-#if defined(ALLEGRO_MINGW32) && !defined(ALLEGRO_CFG_DLL_TLS)
++#if defined(__OpenBSD__) || (defined(ALLEGRO_MINGW32) && !defined(ALLEGRO_CFG_DLL_TLS))
+    /*
+     * MinGW < 4.2.1 doesn't have builtin thread local storage, so we
+     * must use the Windows API.
+@@ -217,7 +217,7 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReaso
+ #define THREAD_LOCAL __declspec(thread)
+ #define HAVE_NATIVE_TLS
+ 
+-#elif defined ALLEGRO_MACOSX || defined ALLEGRO_GP2XWIZ || defined ALLEGRO_IPHONE
++#elif defined ALLEGRO_MACOSX || defined ALLEGRO_GP2XWIZ || defined ALLEGRO_IPHONE || defined(__OpenBSD__)
+ 
+ #define THREAD_LOCAL
+ 
