@@ -1,6 +1,7 @@
 List of ports:
 
 archivers/gnugzip
+cad/librecad
 cad/coin3d
 cad/freecad
 cad/opencascade
