@@ -2,7 +2,7 @@
 
 COMMENT=	Qt-based 2D CAD system
 
-V=		20111125
+V=		20111126
 DISTNAME=	librecad-$V
 PKGNAME=	librecad-1.0.0.$V
 CATEGORIES=	cad graphics
@@ -17,7 +17,7 @@ PERMIT_PACKAGE_FTP=	Yes
 PERMIT_DISTFILES_CDROM=	Yes
 PERMIT_DISTFILES_FTP=	Yes
 
-WANTLIB += ICE Qt3Support QtGui QtHelp QtNetwork QtSql QtXml SM
+WANTLIB += ICE QtGui QtHelp QtNetwork QtSql QtXml SM
 WANTLIB += X11 Xext Xi Xinerama Xrender c fontconfig freetype
 WANTLIB += m pthread stdc++
 
