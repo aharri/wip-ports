@@ -21,7 +21,8 @@ WANTLIB += ICE QtGui QtHelp QtNetwork QtSql QtXml SM
 WANTLIB += X11 Xext Xi Xinerama Xrender c fontconfig freetype
 WANTLIB += m pthread stdc++
 
-MASTER_SITES =	https://github.com/LibreCAD/LibreCAD/tarball/$V/
+MASTER_SITES = http://openbsd.fi/dist/
+#MASTER_SITES =	https://github.com/LibreCAD/LibreCAD/tarball/$V/
 
 MODULES =	x11/qt4
 
