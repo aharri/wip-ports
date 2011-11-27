@@ -1,33 +1,31 @@
 # $OpenBSD$
 
-COMMENT=	Qt-based 2D CAD system
+COMMENT =	Qt-based 2D CAD system
 
-V=		20111126
-DISTNAME=	librecad-$V
-PKGNAME=	librecad-1.0.0.$V
-CATEGORIES=	cad graphics
+V =		20111126
+DISTNAME =	librecad-$V
+PKGNAME =	librecad-1.0.0.$V
+CATEGORIES =	cad graphics
 
-HOMEPAGE=	http://librecad.org/
+HOMEPAGE =	http://librecad.org/
 
 MAINTAINER =	Antti Harri <iku@openbsd.fi>
 
 # GPLv2
-PERMIT_PACKAGE_CDROM=	Yes
-PERMIT_PACKAGE_FTP=	Yes
-PERMIT_DISTFILES_CDROM=	Yes
-PERMIT_DISTFILES_FTP=	Yes
+PERMIT_PACKAGE_CDROM =	Yes
+PERMIT_PACKAGE_FTP =	Yes
+PERMIT_DISTFILES_CDROM =Yes
+PERMIT_DISTFILES_FTP =	Yes
 
 WANTLIB += ICE QtGui QtHelp QtNetwork QtSql QtXml SM
 WANTLIB += X11 Xext Xi Xinerama Xrender c fontconfig freetype
 WANTLIB += m pthread stdc++
 
-MASTER_SITES=	https://github.com/LibreCAD/LibreCAD/tarball/$V/
+MASTER_SITES =	https://github.com/LibreCAD/LibreCAD/tarball/$V/
 
-MODULES=	x11/qt4
+MODULES =	x11/qt4
 
-NO_REGRESS=	Yes
-
-#PORTHOME=	${WRKDIR}
+NO_REGRESS =	Yes
 
 #MAKE_ENV+=	QTDIR=${MODQT_LIBDIR} \
 #		MAKE=${MAKE_PROGRAM}
@@ -58,6 +56,7 @@ do-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/librecad
 	cd ${WRKSRC}/support/doc && tar cf - . | \
 		tar -C ${PREFIX}/share/doc/librecad -xf -
+	${INSTALL_DATA} ${WRKSRC}/LICENSE ${PREFIX}/share/doc/librecad
 	chown -R ${SHAREOWN}:${SHAREGRP} ${PREFIX}/share/doc/librecad/*
 
 .include <bsd.port.mk>

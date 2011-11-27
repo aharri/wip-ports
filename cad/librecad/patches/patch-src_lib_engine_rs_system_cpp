@@ -1,12 +1,12 @@
 $OpenBSD$
---- src/lib/engine/rs_system.cpp.orig	Fri Nov 25 07:19:14 2011
-+++ src/lib/engine/rs_system.cpp	Fri Nov 25 13:56:13 2011
+--- src/lib/engine/rs_system.cpp.orig	Sat Nov 26 14:54:19 2011
++++ src/lib/engine/rs_system.cpp	Sun Nov 27 20:50:49 2011
 @@ -491,11 +491,15 @@ QStringList RS_System::getDirectoryList(const QString&
              }
          }
  
 +#ifdef __OpenBSD__
-+	dirList.append("${LOCALBASE}/share/" + appDirName);
++	dirList.append("${LOCALBASE}/share/" + appDirName + "/" + subDirectory);
 +#elif defined(__Linux__)
          // Ubuntu
          dirList.append("/usr/share/doc/" + appDirName + "/" + subDirectory);
