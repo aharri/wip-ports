@@ -28,7 +28,7 @@ MODULES =	x11/qt4
 
 NO_REGRESS =	Yes
 
-SUBST_VARS =	MODQT_LIBDIR V
+SUBST_VARS =	MODQT_LIBDIR V CXXFLAGS
 
 pre-configure:
 	${SUBST_CMD} ${WRKSRC}/scripts/postprocess-unix.sh \

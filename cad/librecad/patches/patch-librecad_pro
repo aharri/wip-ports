@@ -15,7 +15,7 @@ $OpenBSD$
  #
          QMAKE_POST_LINK = scripts/postprocess-unix.sh
 +	QMAKE_CXXFLAGS_DEBUG =
-+	#QMAKE_CXXFLAGS =
++	QMAKE_CXXFLAGS = ${CXXFLAGS}
 +	QMAKE_CXXFLAGS_RELEASE =
      }
  }
