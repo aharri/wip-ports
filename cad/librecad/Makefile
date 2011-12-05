@@ -4,7 +4,7 @@ COMMENT =	Qt-based 2D CAD system
 
 V =		20111126
 DISTNAME =	librecad-$V
-PKGNAME =	librecad-1.0.0.$V
+PKGNAME =	librecad-0.1.0.0.$V
 CATEGORIES =	cad graphics
 
 HOMEPAGE =	http://librecad.org/
@@ -25,6 +25,7 @@ MASTER_SITES = http://openbsd.fi/dist/
 #MASTER_SITES =	https://github.com/LibreCAD/LibreCAD/tarball/$V/
 
 MODULES =	x11/qt4
+BUILD_DEPENDS =	devel/boost
 
 NO_REGRESS =	Yes
 
@@ -45,10 +46,5 @@ do-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/librecad/${dir}
 	${INSTALL_DATA} ${WRKSRC}/unix/resources/${dir}/* ${PREFIX}/share/librecad/${dir}
 .endfor
-	${INSTALL_DATA_DIR} ${PREFIX}/share/doc/librecad
-	cd ${WRKSRC}/support/doc && tar cf - . | \
-		tar -C ${PREFIX}/share/doc/librecad -xf -
-	${INSTALL_DATA} ${WRKSRC}/LICENSE ${PREFIX}/share/doc/librecad
-	chown -R ${SHAREOWN}:${SHAREGRP} ${PREFIX}/share/doc/librecad/*
 
 .include <bsd.port.mk>

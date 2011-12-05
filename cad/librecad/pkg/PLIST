@@ -1,8 +1,5 @@
 @comment $OpenBSD$
 @bin bin/librecad
-share/doc/librecad/
-share/doc/librecad/LICENSE
-share/doc/librecad/README
 share/librecad/
 share/librecad/fonts/
 share/librecad/fonts/cursive.lff
