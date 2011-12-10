@@ -26,6 +26,7 @@ games/tyrquake
 graphics/freeimage
 graphics/ftgl
 net/rsyncrypto
+shells/zsh
 sysutils/ohtools
 x11/kde/utils3
 x11/soqt
