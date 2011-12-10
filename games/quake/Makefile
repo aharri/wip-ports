@@ -80,18 +80,11 @@ CONFIGURE_ARGS +=	--with-clients=glx,sdl,sdl32,sgl,x11 \
 			--with-cd-default=SDL \
 			--with-sharepath=${PREFIX}/share/quakeforge \
 			--enable-version-info=${SOMAJOR}:${SOMINOR} \
+			--disable-asmopt \
 			--disable-oss \
 			--disable-sun \
 			--disable-jack
-CONFIGURE_ENV =		LDFLAGS='-L${LOCALBASE}/lib -L${X11BASE}/lib' \
-			CPPFLAGS='-I${LOCALBASE}/include -I${X11BASE}/include' \
-			YACC="bison -y"
-# Quakeforge should automatically detect support for assembler
-# optimizations on i386, however it's currently not linking
-# correctly so disable until a fix exists.
-.if ${MACHINE_ARCH:Mi386}
-CONFIGURE_ARGS +=	--disable-asmopt
-.endif
+YACC =			bison
 
 NO_REGRESS =		Yes
 
