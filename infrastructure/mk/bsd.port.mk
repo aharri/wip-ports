@@ -3275,6 +3275,10 @@ rebuild:
 	@rm -f ${_BUILD_COOKIE}
 	@${_MAKE} build
 
+reconfigure:
+	@rm -f ${_CONFIGURE_COOKIE}
+	@${_MAKE} configure
+
 uninstall deinstall:
 	@${ECHO_MSG} "===> Deinstalling for ${FULLPKGNAME${SUBPACKAGE}}"
 	@${SUDO} ${_PKG_DELETE} ${FULLPKGNAME${SUBPACKAGE}}
