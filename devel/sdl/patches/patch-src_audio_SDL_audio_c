@@ -1,0 +1,13 @@
+$OpenBSD: ports/devel/sdl/patches/patch-src_audio_SDL_audio_c,v 1.16 2009/01/24 10:56:11 jakemsr Exp $
+--- src/audio/SDL_audio.c.orig	Tue Oct 13 13:25:35 2009
++++ src/audio/SDL_audio.c	Sun Dec 11 15:10:30 2011
+@@ -36,6 +36,9 @@
+ 
+ /* Available audio drivers */
+ static AudioBootStrap *bootstrap[] = {
++#if SDL_AUDIO_DRIVER_SNDIO
++	&SNDIO_bootstrap,
++#endif
+ #if SDL_AUDIO_DRIVER_BSD
+ 	&BSD_AUDIO_bootstrap,
+ #endif
