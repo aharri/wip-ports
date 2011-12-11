@@ -7,13 +7,15 @@ COMMENT-server =	QuakeWorld server
 # .so.1.0
 SOMAJOR =		0
 SOMINOR =		0
-V =			20111210
+V =			0.5.99beta2
 DISTNAME =		quakeforge-$V
 PKGNAME-main =		quake-$V
 PKGNAME-libs =		quake-libs-$V
 FULLPKGNAME-server =	quakeworld-server-$V
 FULLPKGPATH-server =	games/quake,-server
-EPOCH-server =		0
+EPOCH-main =		0
+EPOCH-libs =		0
+EPOCH-server =		1
 
 MULTI_PACKAGES =	-main -libs -server
 
@@ -56,7 +58,8 @@ WANTLIB-libs += vorbis vorbisfile z iconv
 WANTLIB-server += QFconsole QFgamecode QFgib QFimage QFmodels QFruamoko
 WANTLIB-server += QFutil c m ncurses png pthread z
 
-MASTER_SITES =		http://openbsd.fi/dist/
+MASTER_SITES =		${MASTER_SITE_SOURCEFORGE:=quake/}
+EXTRACT_SUFX =		.tar.bz2
 
 MODULES =		devel/gettext
 BUILD_DEPENDS =		devel/bison
