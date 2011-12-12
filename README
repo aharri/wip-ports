@@ -5,6 +5,7 @@ cad/librecad
 cad/coin3d
 cad/freecad
 cad/opencascade
+devel/sdl
 devel/libchipmunk
 games/openxcom
 games/megaglest/base
