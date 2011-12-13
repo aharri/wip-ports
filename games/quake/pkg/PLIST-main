@@ -62,9 +62,7 @@ lib/pkgconfig/
 @man man/man1/qfvis.1
 @man man/man1/wad.1
 @man man/man1/zpak.1
-share/examples/quakeforge/
-share/examples/quakeforge/quakeforge.conf
-@sample ${SYSCONFDIR}/quakeforge.conf
+share/doc/pkg-readmes/${FULLPKGNAME}
 share/quakeforge/
 share/quakeforge/QF/
 share/quakeforge/QF/menu.dat.gz
