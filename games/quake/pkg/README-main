@@ -1,5 +1,5 @@
 Quake has some audio bugs that cause stuttering. If you
 experience any stuttering you should try without sndiod
-or making sndiod block size larger (-b). Notice that the
+or make sndiod block size larger (-b). Notice that the
 bigger the sndiod block size is, the bigger the latency
 becomes between video and audio.
