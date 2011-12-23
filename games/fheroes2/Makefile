@@ -5,7 +5,7 @@ DISTNAME =		fheroes2-src-r2693
 PKGNAME =		${DISTNAME:S/-src-r/-/}
 CATEGORIES =		games x11
 
-HOMEPAGE =		http://sourceforge.net/apps/mediawiki/fheroes2/index.php?title=Main_Page
+HOMEPAGE =		http://sourceforge.net/apps/mediawiki/fheroes2/
 MAINTAINER =		Antti Harri <iku@openbsd.fi>
 
 # Mixed free licenses, except AI files don't allow commercial use.
@@ -28,7 +28,7 @@ LIB_DEPENDS +=		devel/sdl-mixer
 LIB_DEPENDS +=		devel/sdl-net
 LIB_DEPENDS +=		devel/sdl-ttf
 
-MAKE_FLAGS =		PLATFORM=bsd MAKE="${MAKE_PROGRAM}" CXX="${CXX}" 
+MAKE_FLAGS =		PLATFORM=bsd MAKE="${MAKE_PROGRAM}" CXX="${CXX}" WITH_AI=simple
 
 USE_GMAKE =		Yes
 NO_REGRESS =		Yes
