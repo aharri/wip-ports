@@ -25,7 +25,6 @@ games/eduke32
 games/tkb
 games/tyrquake
 graphics/freeimage
-graphics/ftgl
 multimedia/yle-dl
 net/rsyncrypto
 shells/zsh
