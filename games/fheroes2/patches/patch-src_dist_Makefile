@@ -1,0 +1,30 @@
+$OpenBSD$
+--- src/dist/Makefile.orig	Fri Dec 23 20:54:03 2011
++++ src/dist/Makefile	Fri Dec 23 20:55:22 2011
+@@ -48,23 +48,19 @@ SEARCH     := $(addsuffix /*.cpp, $(SRCDIRLIST))
+ all: $(TARGET)
+ 
+ $(TARGET): $(notdir $(patsubst %.cpp, %.o, $(wildcard $(SEARCH)))) $(LIBENGINE) $(RES)
+-	@echo "lnk: $@"
+ 	$(CXX) $(LDFLAGS) $^ $(LIBS) -o $@
+ 
+ pot: $(wildcard $(SEARCH))
+-	@echo "gen: $(POT)"
+-	@xgettext -d $(TARGET) -C -k_ -o $(POT) $(wildcard $(SEARCH))
++	xgettext -d $(TARGET) -C -k_ -o $(POT) $(wildcard $(SEARCH))
+ 
+ $(RES): $(ICOFILE)
+-	@echo "gen: $(RES)"
+-	@echo "$(IDICON) ICON \"$(ICOFILE)\"" > $(TARGET).rc
++	echo "$(IDICON) ICON \"$(ICOFILE)\"" > $(TARGET).rc
+ 	$(WINDRES) $(TARGET).rc -O coff -o $(TARGET).res
+ 
+ VPATH := $(SRCDIRLIST)
+ 
+ %.o: %.cpp
+-	@echo "cxx: $@"
+-	@$(CXX) -c -MD $(addprefix -I, $(SRCDIRLIST)) $< $(CFLAGS)
++	$(CXX) -c -MD $(addprefix -I, $(SRCDIRLIST)) $< $(CFLAGS)
+ 
+ include $(wildcard *.d)
+ 

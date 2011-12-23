@@ -1,0 +1,3 @@
+@comment $OpenBSD$
+@bin bin/fheroes2
+share/fheroes2/

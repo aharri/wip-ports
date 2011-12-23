@@ -1,0 +1,11 @@
+$OpenBSD$
+--- src/engine/IMG_savepng.cpp.orig	Fri Dec 23 20:48:30 2011
++++ src/engine/IMG_savepng.cpp	Fri Dec 23 20:48:39 2011
+@@ -28,6 +28,7 @@
+  * 4/17/04 - IMG_SavePNG & IMG_SavePNG_RW - Philip D. Bober
+  * 11/08/2004 - Compr fix, levels -1,1-7 now work - Tyler Montbriand
+  */
++#include <zlib.h>
+ #include <stdlib.h>
+ #include "SDL.h"
+ #include "IMG_savepng.h"
