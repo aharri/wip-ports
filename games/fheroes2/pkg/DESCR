@@ -1,2 +1,12 @@
 The Free Heroes II project (FHeroes 2) aims to create a free
 implementation of Heroes of Might and Magic II engine using SDL.
+
+Note that you must have HoMM II datafiles from elsewhere.
+
+System wide data directory  : ${PREFIX}/share/fheroes2
+Per-user game data directory: ~/.fheroes2
+
+One of those directories should contain the following:
+
+data/HEROES2.AGG
+maps/*.MP2

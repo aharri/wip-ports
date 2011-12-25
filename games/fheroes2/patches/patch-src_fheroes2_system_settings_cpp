@@ -1,0 +1,36 @@
+$OpenBSD$
+--- src/fheroes2/system/settings.cpp.orig	Wed Nov  2 03:28:32 2011
++++ src/fheroes2/system/settings.cpp	Sun Dec 25 13:08:54 2011
+@@ -22,6 +22,12 @@
+ 
+ #include <algorithm>
+ #include <fstream>
++#include <stdio.h>
++#include <stdlib.h>
++#include <sys/param.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
+ #include "maps.h"
+ #include "race.h"
+ #include "tinyconfig.h"
+@@ -290,6 +296,19 @@ bool Settings::Read(const std::string & filename)
+     list_maps_directory.unique();
+     
+     // data directory
++    struct stat status;
++    if(stat("${PREFIX}/share/fheroes2/data", &status) == 0 && status.st_mode & S_IFDIR)
++        path_data_directory = "${PREFIX}/share/fheroes2/data";
++
++    char *homedir;
++    char path2[MAXPATHLEN];
++    if((homedir = getenv("HOME")) != NULL)
++    {
++        snprintf(path2, MAXPATHLEN, "%s/.fheroes2/data", homedir);
++        if(stat(path2, &status) == 0 && status.st_mode & S_IFDIR)
++            path_data_directory = path2;
++    }
++
+     entry = config.Find("data");
+     if(entry) path_data_directory = entry->StrParams();
+ 

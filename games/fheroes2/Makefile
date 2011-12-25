@@ -22,6 +22,7 @@ MASTER_SITES =		${MASTER_SITE_SOURCEFORGE:=fheroes2/}
 EXTRACT_SUFX =		.tgz
 
 MODULES =		devel/gettext
+RUN_DEPENDS =		audio/timidity
 LIB_DEPENDS +=		devel/sdl
 LIB_DEPENDS +=		devel/sdl-image
 LIB_DEPENDS +=		devel/sdl-mixer
@@ -34,6 +35,9 @@ USE_GMAKE =		Yes
 NO_REGRESS =		Yes
 
 WRKDIST =		${WRKDIR}/fheroes-src
+
+do-configure:
+	${SUBST_CMD} ${WRKSRC}/src/fheroes2/system/settings.cpp
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/fheroes2 ${PREFIX}/bin
