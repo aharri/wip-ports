@@ -1,6 +1,6 @@
 $OpenBSD$
 --- src/fheroes2/system/settings.cpp.orig	Wed Nov  2 03:28:32 2011
-+++ src/fheroes2/system/settings.cpp	Sun Dec 25 13:08:54 2011
++++ src/fheroes2/system/settings.cpp	Sun Dec 25 20:26:50 2011
 @@ -22,6 +22,12 @@
  
  #include <algorithm>
@@ -14,16 +14,32 @@ $OpenBSD$
  #include "maps.h"
  #include "race.h"
  #include "tinyconfig.h"
-@@ -290,6 +296,19 @@ bool Settings::Read(const std::string & filename)
+@@ -285,14 +291,40 @@ bool Settings::Read(const std::string & filename)
+     }
+ 
+     // maps directories
++    struct stat status;
++    if(stat("${PREFIX}/share/fheroes2/maps", &status) == 0 && status.st_mode & S_IFDIR)
++        list_maps_directory.push_back("${PREFIX}/share/fheroes2/maps");
++
++    //printf("maps: %s\n", list_maps_directory.c_str());
++    char *homedir;
++    char path2[MAXPATHLEN];
++    if((homedir = getenv("HOME")) != NULL)
++    {
++        snprintf(path2, MAXPATHLEN, "%s/.fheroes2/maps", homedir);
++        if(stat(path2, &status) == 0 && status.st_mode & S_IFDIR)
++            list_maps_directory.push_back(path2);
++    }
+     config.GetParams("maps", list_maps_directory);
+     list_maps_directory.sort();
      list_maps_directory.unique();
      
      // data directory
-+    struct stat status;
 +    if(stat("${PREFIX}/share/fheroes2/data", &status) == 0 && status.st_mode & S_IFDIR)
 +        path_data_directory = "${PREFIX}/share/fheroes2/data";
 +
-+    char *homedir;
-+    char path2[MAXPATHLEN];
++    printf("data: %s\n", path_data_directory.c_str());
 +    if((homedir = getenv("HOME")) != NULL)
 +    {
 +        snprintf(path2, MAXPATHLEN, "%s/.fheroes2/data", homedir);
@@ -31,6 +47,53 @@ $OpenBSD$
 +            path_data_directory = path2;
 +    }
 +
++    printf("data: %s\n", path_data_directory.c_str());
      entry = config.Find("data");
      if(entry) path_data_directory = entry->StrParams();
  
++    printf("data: %s\n", path_data_directory.c_str());
+     // unicode
+     if(Unicode())
+     {
+@@ -1432,9 +1464,31 @@ void Settings::SetPosButtons(const Point & pt) { pos_b
+ void Settings::SetPosIcons(const Point & pt) { pos_icon = pt; }
+ void Settings::SetPosStatus(const Point & pt) { pos_stat = pt; }
+ 
++std::string Settings::GetBinPath() const
++{
++    std::string binary = local_prefix + SEPARATOR + "fheroes2.bin";
++#ifdef __OpenBSD__
++    char *homedir;
++    char path2[MAXPATHLEN];
++
++    if((homedir = getenv("HOME")) != NULL)
++    {
++        snprintf(path2, MAXPATHLEN, "%s/.fheroes2/", homedir);
++        // mkdir it if it doesn't exist.
++        if(mkdir(path2, 0755) == 0 || errno == EEXIST)
++        {
++		binary = path2;
++		binary = binary + "fheroes2.bin";
++        }
++    }
++#endif
++    printf("binary: %s\n", binary.c_str());
++    return binary;
++}
++
+ void Settings::BinarySave(void) const
+ {
+-    const std::string binary = local_prefix + SEPARATOR + "fheroes2.bin";
++    const std::string binary = GetBinPath();
+     QueueMessage msg;
+ 
+     // version
+@@ -1467,7 +1521,7 @@ void Settings::BinarySave(void) const
+ 
+ void Settings::BinaryLoad(void)
+ {
+-    const std::string binary = local_prefix + SEPARATOR + "fheroes2.bin";
++    const std::string binary = GetBinPath();
+ 
+     if(FilePresent(binary))
+     {

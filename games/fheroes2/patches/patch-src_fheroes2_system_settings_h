@@ -1,0 +1,11 @@
+$OpenBSD$
+--- src/fheroes2/system/settings.h.orig	Wed Nov  9 05:31:40 2011
++++ src/fheroes2/system/settings.h	Sun Dec 25 19:22:24 2011
+@@ -285,6 +285,7 @@ class Settings (public)
+     bool MusicExt(void) const;
+     bool MusicMIDI(void) const;
+     bool MusicCD(void) const;
++    std::string GetBinPath(void) const;
+     void BinarySave(void) const;
+     void BinaryLoad(void);
+ 
