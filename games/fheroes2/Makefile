@@ -30,7 +30,6 @@ LIB_DEPENDS +=		devel/sdl-net
 LIB_DEPENDS +=		devel/sdl-ttf
 
 MAKE_FLAGS +=		PLATFORM=bsd WITH_AI=simple
-#MAKE_FLAGS +=		CONFIGURE_FHEROES2_DATA="${PREFIX}/share/fheroes2"
 MAKE_FLAGS +=		MAKE="${MAKE_PROGRAM}" CXX="${CXX}"
 
 USE_GMAKE =		Yes
@@ -45,7 +44,6 @@ do-configure:
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/fheroes2 ${PREFIX}/bin
 	${INSTALL_DATA_DIR} ${PREFIX}/share/fheroes2
-	#${INSTALL_DATA_DIR} ${PREFIX}/examples/fheroes2
 	${INSTALL_DATA} \
 		${WRKSRC}/fheroes2.cfg \
 		${WRKSRC}/fheroes2.key \
