@@ -1,0 +1,20 @@
+$OpenBSD$
+--- src/SConstruct.orig	Sat Aug 14 12:05:15 2010
++++ src/SConstruct	Sat Jan 14 18:01:18 2012
+@@ -153,6 +153,8 @@ if gcc_is_mingw():
+ 	g_os = 'win32'
+ elif OS == 'Darwin':
+ 	g_os = 'Darwin'
++elif OS == 'OpenBSD':
++	g_os = 'OpenBSD'
+ else:
+ 	g_os = 'Linux'
+ print 'OS: %s' % g_os
+@@ -269,6 +271,7 @@ scons_utils.SetupUtils( g_base_env )
+ 
+ g_env = g_base_env.Clone()
+ 
++g_env.Append( CPPFLAGS = Split(MYCPPFLAGS) )
+ g_env['CPPFLAGS'] += OPTCPPFLAGS
+ g_env['CPPFLAGS'] += CORECPPFLAGS
+ g_env['LINKFLAGS'] += CORELINKFLAGS

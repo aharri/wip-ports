@@ -1,0 +1,14 @@
+$OpenBSD$
+--- src/renderer/qgl.h.orig	Sat Jan 14 10:31:58 2012
++++ src/renderer/qgl.h	Sat Jan 14 10:31:59 2012
+@@ -77,6 +77,10 @@ If you have questions concerning this license or the a
+ #include <GL/fxmesa.h>
+ #endif
+ 
++#elif defined( __OpenBSD__ )
++#include <GL/gl.h>
++#include <GL/glx.h>
++
+ #else
+ 
+ #include <gl.h>
