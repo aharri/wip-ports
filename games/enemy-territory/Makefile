@@ -46,4 +46,7 @@ CXXFLAGS +=		-I${X11BASE}/include
 #LDFLAGS =		???
 WRKSRC =		${WRKDIST}/src
 
+pre-configure:
+	${SUBST_CMD} ${WRKSRC}/SConscript.core
+
 .include <bsd.port.mk>

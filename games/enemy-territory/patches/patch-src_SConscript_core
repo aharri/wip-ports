@@ -1,0 +1,43 @@
+$OpenBSD$
+--- src/SConscript.core.orig	Sun Jan 15 10:29:51 2012
++++ src/SConscript.core	Sun Jan 15 19:29:23 2012
+@@ -158,8 +158,8 @@ linux_sources = [
+ linux_full_sources = [
+         'unix/linux_glimp.c',
+         'unix/linux_qgl.c',
+-        'unix/linux_snd.c',
+-        'unix/linux_joystick.c',
++#        'unix/linux_snd.c',
++#        'unix/linux_joystick.c',
+ #        'unix/snd_mixa.S'
+ ]
+ 
+@@ -291,6 +291,9 @@ elif ( g_os == 'win32' ):
+ 	local_env['LINK'] = g_env['CXX']
+ elif ( g_os == 'Darwin' ):
+ 	local_env.Append( LINKFLAGS = [ '-framework', 'AGL', '-framework', 'OpenGL', '-framework', 'Carbon', '-framework', 'IOKit', '-framework', 'DrawSprocket', '-lcurl' ] )
++elif ( g_os == 'OpenBSD' ):
++	local_env.Append( LIBS = [ 'X11', 'Xext', 'm', 'GL' ] )
++	local_env.Append( LIBPATH = [ '${X11BASE}/lib' ] )
+ 
+ if ( MASTER != '' ):
+ 	local_env.Append( CPPDEFINES = [ 'MASTER_SERVER_NAME=\\"%s\\"' % MASTER ] )
+@@ -298,6 +301,8 @@ if ( MASTER != '' ):
+ source_list = server_list + qcommon_list
+ if ( g_os == 'Linux' ):
+ 	source_list += linux_sources + snapvector + matha
++elif ( g_os == 'OpenBSD' ):
++	source_list += linux_sources
+ elif ( g_os == 'win32' ):
+ 	source_list += win32_sources
+ elif ( g_os == 'Darwin' ):
+@@ -320,6 +325,9 @@ if ( local_dedicated == 0 ):
+ 	source_list += curl_lib
+ 	if ( g_os == 'Linux' ):
+ 		source_list += snd_mixa
++		source_list += linux_full_sources
++		source_list += staticx11_libs
++	if ( g_os == 'OpenBSD' ):
+ 		source_list += linux_full_sources
+ 		source_list += staticx11_libs
+ 	if ( g_os == 'win32' ):

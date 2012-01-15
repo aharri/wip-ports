@@ -1,0 +1,12 @@
+$OpenBSD$
+--- src/unix/linux_glimp.c.orig	Sun Jan 15 19:18:19 2012
++++ src/unix/linux_glimp.c	Sun Jan 15 19:18:46 2012
+@@ -79,7 +79,7 @@ If you have questions concerning this license or the a
+ #include <X11/keysym.h>
+ #include <X11/cursorfont.h>
+ 
+-#include <X11/extensions/xf86dga.h>
++#include <X11/extensions/Xxf86dga.h>
+ #include <X11/extensions/xf86vmode.h>
+ 
+ #define WINDOW_CLASS_NAME   "Enemy Territory"
