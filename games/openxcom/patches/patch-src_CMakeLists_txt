@@ -1,27 +1,18 @@
 $OpenBSD$
---- src/CMakeLists.txt.orig	Thu Oct 27 23:38:59 2011
-+++ src/CMakeLists.txt	Mon Oct 31 21:37:14 2011
-@@ -503,11 +503,11 @@ if ( WIN32 )
+--- src/CMakeLists.txt.orig	Thu Feb 16 17:24:58 2012
++++ src/CMakeLists.txt	Fri Feb 17 20:54:58 2012
+@@ -530,10 +530,10 @@ if ( WIN32 )
  endif ()
  target_link_libraries ( openxcom ${system_libs} ${SDLMIXER_LIBRARY} ${SDLGFX_LIBRARY} ${SDL_LIBRARY} ${YAMLCPP_LIBRARY} )
  
 -add_custom_command ( TARGET openxcom
 -  POST_BUILD
--  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/bin/USER ${EXECUTABLE_OUTPUT_PATH}/USER
--  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/bin/DATA ${EXECUTABLE_OUTPUT_PATH}/DATA )
--install ( DIRECTORY ${CMAKE_SOURCE_DIR}/bin/DATA DESTINATION bin )
+-  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/bin/data ${EXECUTABLE_OUTPUT_PATH}/data )
+-install ( DIRECTORY ${CMAKE_SOURCE_DIR}/bin/data DESTINATION bin )
 +#add_custom_command ( TARGET openxcom
 +#  POST_BUILD
-+#  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/bin/USER ${EXECUTABLE_OUTPUT_PATH}/USER
-+#  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/bin/DATA ${EXECUTABLE_OUTPUT_PATH}/DATA )
-+#install ( DIRECTORY ${CMAKE_SOURCE_DIR}/bin/DATA DESTINATION bin )
++#  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/bin/data ${EXECUTABLE_OUTPUT_PATH}/data )
++#install ( DIRECTORY ${CMAKE_SOURCE_DIR}/bin/data DESTINATION bin )
  
  # Copy Windows DLL to bin folder
  if ( WIN32 )
-@@ -532,4 +532,4 @@ if ( MSVC )
-   source_group ( "Ruleset" FILES ${ruleset_src} )
-   source_group ( "SaveGame" FILES ${savegame_src} )
-   source_group ( "Ufopedia" FILES ${ufopedia_src} )
--endif ()
-\ No newline at end of file
-+endif ()

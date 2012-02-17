@@ -1,6 +1,5 @@
 @comment $OpenBSD: ports/games/openxcom/pkg/PLIST,v 1.2 2011/07/18 10:57:01 jasper Exp $
-bin/openxcom
-@bin bin/openxcom-bin
+@bin bin/openxcom
 share/doc/pkg-readmes/${FULLPKGNAME}
 share/openxcom/
 share/openxcom/Language/
