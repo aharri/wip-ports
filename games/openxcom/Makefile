@@ -24,6 +24,8 @@ LIB_DEPENDS =		devel/sdl-gfx \
 			devel/sdl-mixer \
 			devel/yaml-cpp
 
+CONFIGURE_ARGS =	-DDEV_BUILD=Off
+
 NO_REGRESS =		Yes
 VMEM_WARNING =		Yes
 
