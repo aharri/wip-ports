@@ -1,0 +1,12 @@
+$OpenBSD$
+--- Sources/Core/System/keep_alive.cpp.orig	Thu Jan 13 13:15:25 2011
++++ Sources/Core/System/keep_alive.cpp	Sun Feb  5 14:02:43 2012
+@@ -152,7 +152,7 @@ std::vector<CL_KeepAliveObject *> *cl_get_keep_alive_v
+ 	return reinterpret_cast<std::vector<CL_KeepAliveObject*> *>(TlsGetValue(cl_tls_keep_alive_index));
+ }
+ 
+-#elif defined(__APPLE__)
++#elif defined(__APPLE__) || defined (__OpenBSD__ )
+ 
+ static bool cl_tls_keep_alive_index_created = false;
+ static pthread_key_t cl_tls_keep_alive_index;

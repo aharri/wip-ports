@@ -1,0 +1,12 @@
+$OpenBSD$
+--- Sources/Core/System/mutex.cpp.orig	Wed Apr  6 18:32:57 2011
++++ Sources/Core/System/mutex.cpp	Sun Feb  5 14:02:43 2012
+@@ -53,7 +53,7 @@ CL_Mutex::CL_Mutex()
+ #else
+ 	pthread_mutexattr_t attr;
+ 	pthread_mutexattr_init(&attr);
+-	#if defined(__FreeBSD__) || defined(__APPLE__)
++	#if defined(__FreeBSD__) || defined(__APPLE__) || defined( __OpenBSD__ )
+ 	pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
+ 	#else
+ 	#if PTHREAD_MUTEX_RECURSIVE_NP

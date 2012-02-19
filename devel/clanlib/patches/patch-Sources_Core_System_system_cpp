@@ -1,0 +1,39 @@
+$OpenBSD$
+--- Sources/Core/System/system.cpp.orig	Thu Jan 27 10:46:22 2011
++++ Sources/Core/System/system.cpp	Sun Feb  5 14:02:43 2012
+@@ -480,7 +480,7 @@ class CL_ThreadTempStackPool : public CL_MemoryPool (p
+ 			}
+ 		}
+ 	} cl_temp_pool_tls_cleanup;
+-#elif defined(__APPLE__)
++#elif defined(__APPLE__) || defined( __OpenBSD__ )
+ 	static bool cl_temp_pool_tls_index_created = false;
+ 	static pthread_key_t cl_temp_pool_tls_index;
+ 	CL_Mutex cl_temp_pool_tls_mutex;
+@@ -504,7 +504,7 @@ void CL_System::alloc_thread_temp_pool()
+ 		TlsSetValue(cl_temp_pool_tls_index, cl_temp_pool);
+ 	}
+ 	cl_temp_pool->add_reference();
+-#elif defined(__APPLE__)
++#elif defined(__APPLE__) || defined ( __OpenBSD__ )
+ 	if (!cl_temp_pool_tls_index_created)
+ 	{
+ 		CL_MutexSection mutex_lock(&cl_temp_pool_tls_mutex);
+@@ -532,7 +532,7 @@ void CL_System::free_thread_temp_pool()
+ 	CL_ThreadTempStackPool *cl_temp_pool = (CL_ThreadTempStackPool *) TlsGetValue(cl_temp_pool_tls_index);
+ 	if (cl_temp_pool && cl_temp_pool->release_reference() == 0)
+ 		TlsSetValue(cl_temp_pool_tls_index, 0);
+-#elif defined(__APPLE__)
++#elif defined(__APPLE__) || defined ( __OpenBSD__ )
+ 	CL_ThreadTempStackPool *cl_temp_pool = (CL_ThreadTempStackPool *) pthread_getspecific(cl_temp_pool_tls_index);
+ 	if (cl_temp_pool && cl_temp_pool->release_reference() == 0)
+ 		pthread_setspecific(cl_temp_pool_tls_index, 0);
+@@ -547,7 +547,7 @@ CL_MemoryPool *CL_MemoryPool::get_temp_pool()
+ #ifdef WIN32
+ 	CL_ThreadTempStackPool *cl_temp_pool = (CL_ThreadTempStackPool *) TlsGetValue(cl_temp_pool_tls_index);
+ 	return cl_temp_pool;
+-#elif defined(__APPLE__)
++#elif defined(__APPLE__) || defined(__OpenBSD__)
+ 	CL_ThreadTempStackPool *cl_temp_pool = (CL_ThreadTempStackPool *) pthread_getspecific(cl_temp_pool_tls_index);
+ 	return cl_temp_pool;
+ #else

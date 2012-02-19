@@ -1,0 +1,39 @@
+$OpenBSD$
+--- Sources/Display/Render/shared_gc_data.cpp.orig	Sun Feb  5 19:02:37 2012
++++ Sources/Display/Render/shared_gc_data.cpp	Sun Feb  5 18:54:42 2012
+@@ -90,7 +90,7 @@ void CL_SharedGCData::unload_all_textures()
+ 			}
+ 		}
+ 	} cl_sharedgc_tls_cleanup;
+-#elif defined(__APPLE__)
++#elif defined(__APPLE__) || defined(__OpenBSD__)
+ 	static bool cl_sharedgc_tls_index_created = false;
+ 	static pthread_key_t cl_sharedgc_tls_index;
+ 	CL_Mutex cl_sharedgc_tls_mutex;
+@@ -115,7 +115,7 @@ void CL_SharedGCData::add_ref()
+ 		TlsSetValue(cl_sharedgc_tls_index, cl_sharedgc);
+ 	}
+ 	cl_sharedgc->impl->reference_count++;
+-#elif defined(__APPLE__)
++#elif defined(__APPLE__) || defined(__OpenBSD__)
+ 	if (!cl_sharedgc_tls_index_created)
+ 	{
+ 		CL_MutexSection mutex_lock(&cl_sharedgc_tls_mutex);
+@@ -148,7 +148,7 @@ void CL_SharedGCData::release_ref()
+ 		delete cl_sharedgc;
+ 		TlsSetValue(cl_sharedgc_tls_index, 0);
+ 	}
+-#elif defined(__APPLE__)
++#elif defined(__APPLE__) || defined(__OpenBSD__)
+ 	CL_SharedGCData *cl_sharedgc = (CL_SharedGCData *) pthread_getspecific(cl_sharedgc_tls_index);
+ 	if (cl_sharedgc && --cl_sharedgc->impl->reference_count == 0)
+ 	{
+@@ -173,7 +173,7 @@ CL_SharedGCData *CL_SharedGCData::get_instance()
+ #ifdef WIN32
+ 	CL_SharedGCData *cl_sharedgc = (CL_SharedGCData *) TlsGetValue(cl_sharedgc_tls_index);
+ 	return cl_sharedgc;
+-#elif defined(__APPLE__)
++#elif defined(__APPLE__) || defined(__OpenBSD__)
+ 	CL_SharedGCData *cl_sharedgc = (CL_SharedGCData *) pthread_getspecific(cl_sharedgc_tls_index);
+ 	return cl_sharedgc;
+ #else

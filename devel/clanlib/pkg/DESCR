@@ -1,0 +1,5 @@
+ClanLib is a cross platform C++ toolkit library.
+
+Essentially the library offers a series of different functionality under
+a streamlined API. Its primary focus is on games, although not limited
+for that usage only.

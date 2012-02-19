@@ -1,0 +1,14 @@
+@comment $OpenBSD$
+@lib lib/libclan22App.so.${LIBclan22App_VERSION}
+@lib lib/libclan22CSSLayout.so.${LIBclan22CSSLayout_VERSION}
+@lib lib/libclan22Core.so.${LIBclan22Core_VERSION}
+@lib lib/libclan22Database.so.${LIBclan22Database_VERSION}
+@lib lib/libclan22Display.so.${LIBclan22Display_VERSION}
+@lib lib/libclan22GUI.so.${LIBclan22GUI_VERSION}
+@lib lib/libclan22MikMod.so.${LIBclan22MikMod_VERSION}
+@lib lib/libclan22Network.so.${LIBclan22Network_VERSION}
+@lib lib/libclan22RegExp.so.${LIBclan22RegExp_VERSION}
+@lib lib/libclan22SWRender.so.${LIBclan22SWRender_VERSION}
+@lib lib/libclan22Sound.so.${LIBclan22Sound_VERSION}
+@lib lib/libclan22Sqlite.so.${LIBclan22Sqlite_VERSION}
+@lib lib/libclan22Vorbis.so.${LIBclan22Vorbis_VERSION}

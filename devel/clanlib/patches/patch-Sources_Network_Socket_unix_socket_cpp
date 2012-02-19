@@ -1,0 +1,20 @@
+$OpenBSD$
+--- Sources/Network/Socket/unix_socket.cpp.orig	Thu Jan 27 12:27:59 2011
++++ Sources/Network/Socket/unix_socket.cpp	Sun Feb  5 14:02:43 2012
+@@ -39,9 +39,14 @@
+ #include <netinet/tcp.h>
+ #include <errno.h>
+ 
+-#ifdef __APPLE__
+-# define SOL_TCP IPPROTO_TCP    // Fix for BSD systems. --NDT
++#if defined( __APPLE__ )
++# define SOL_TCP IPPROTO_TCP // Fix for BSD systems. --NDT
++#elif defined(__OpenBSD__)
++# define SOL_TCP IPPROTO_TCP // Fix for BSD systems. --NDT
++# define TCP_KEEPIDLE SO_KEEPALIVE
++# define TCP_KEEPINTVL SO_DEBUG
+ #endif
++
+ 
+ CL_UnixSocket::CL_UnixSocket()
+ : handle(-1), close_handle_flag(true)
