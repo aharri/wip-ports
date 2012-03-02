@@ -33,7 +33,10 @@ MODGCC4_VERSION=4.6
 
 NO_REGRESS =	Yes
 
-QMAKE_FLAGS =	QMAKE_CXX="${CXX}" QMAKE_CXXFLAGS="${CXXFLAGS}" LIBS="${LDFLAGS}"
+QMAKE_FLAGS =	QMAKE_CXX="${CXX}" \
+		QMAKE_CXXFLAGS="${CXXFLAGS}" \
+		QMAKE_CXXFLAGS_RELEASE="" \
+		LIBS="${LDFLAGS}"
 CXXFLAGS +=	`pkg-config --cflags freetype2`
 LDFLAGS +=	`pkg-config --libs freetype2`
 
