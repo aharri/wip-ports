@@ -1,0 +1,12 @@
+$OpenBSD$
+--- Coin.pc.orig	Tue Sep 13 19:54:19 2011
++++ Coin.pc	Tue Sep 13 19:55:02 2011
+@@ -10,7 +10,7 @@ Description: a high-level 3D graphics toolkit, fully c
+ Version: 3.1.3
+ Requires:
+ Conflicts:
+-Libs: -L${libdir}  -lCoin 
++Libs: -L${libdir}  -lCoin -lGL
+ Cflags: -I${includedir} -DCOIN_INTERNAL -DCOIN_DEBUG=0 -I/usr/X11R6/include 
+ 
+ coin_host=x86_64-unknown-openbsd5.0
