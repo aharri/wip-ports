@@ -1,7 +1,7 @@
 $OpenBSD$
---- src/lib/engine/rs_system.cpp.orig	Sat Nov 26 14:54:19 2011
-+++ src/lib/engine/rs_system.cpp	Sun Nov 27 20:50:49 2011
-@@ -491,11 +491,15 @@ QStringList RS_System::getDirectoryList(const QString&
+--- librecad/src/lib/engine/rs_system.cpp.orig	Thu Mar  1 01:40:17 2012
++++ librecad/src/lib/engine/rs_system.cpp	Thu Mar  1 15:08:42 2012
+@@ -520,11 +520,15 @@ QStringList RS_System::getDirectoryList(const QString&
              }
          }
  

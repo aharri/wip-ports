@@ -2,16 +2,16 @@
 
 COMMENT =	Qt-based 2D CAD system
 
-V =		20111126
+V =		20120301
 DISTNAME =	librecad-$V
-PKGNAME =	librecad-0.1.0.0.$V
+PKGNAME =	librecad-1.0.0.$V
 CATEGORIES =	cad graphics
 
 HOMEPAGE =	http://librecad.org/
 
 MAINTAINER =	Antti Harri <iku@openbsd.fi>
 
-# GPLv2
+# GPLv2 and other free licenses
 PERMIT_PACKAGE_CDROM =	Yes
 PERMIT_PACKAGE_FTP =	Yes
 PERMIT_DISTFILES_CDROM =Yes
@@ -19,22 +19,26 @@ PERMIT_DISTFILES_FTP =	Yes
 
 WANTLIB += ICE QtGui QtHelp QtNetwork QtSql QtXml SM
 WANTLIB += X11 Xext Xi Xinerama Xrender c fontconfig freetype
-WANTLIB += m pthread stdc++
+WANTLIB += m z pthread
 
 MASTER_SITES = http://openbsd.fi/dist/
 #MASTER_SITES =	https://github.com/LibreCAD/LibreCAD/tarball/$V/
 
-MODULES =	x11/qt4
+MODULES =	x11/qt4 gcc4
 BUILD_DEPENDS =	devel/boost
+
+MODGCC4_ARCHS =	*
+MODGCC4_LANGS =	c++
+MODGCC4_VERSION=4.6
 
 NO_REGRESS =	Yes
 
-SUBST_VARS =	MODQT_LIBDIR V CXXFLAGS
+QMAKE_FLAGS =	QMAKE_CXX="${CXX}" QMAKE_CXXFLAGS="${CXXFLAGS}" LIBS="${LDFLAGS}"
+CXXFLAGS +=	`pkg-config --cflags freetype2`
+LDFLAGS +=	`pkg-config --libs freetype2`
 
 pre-configure:
-	${SUBST_CMD} ${WRKSRC}/scripts/postprocess-unix.sh \
-		${WRKSRC}/librecad.pro \
-		${WRKSRC}/src/lib/engine/rs_system.cpp
+	${SUBST_CMD} ${WRKSRC}/librecad/src/lib/engine/rs_system.cpp
 
 do-configure:
 	cd ${WRKSRC} && \

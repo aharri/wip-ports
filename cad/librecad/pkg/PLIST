@@ -35,7 +35,7 @@ share/librecad/fonts/symbol_astro.lff
 share/librecad/fonts/symbol_misc1.lff
 share/librecad/fonts/symbol_misc2.lff
 share/librecad/fonts/unicode.lff
-share/librecad/fonts/wqy-simplified.lff
+share/librecad/fonts/wqy-unicode.lff
 share/librecad/patterns/
 share/librecad/patterns/angle.dxf
 share/librecad/patterns/ansi31.dxf
@@ -123,6 +123,7 @@ share/librecad/qm/librecad_no.qm
 share/librecad/qm/librecad_pa.qm
 share/librecad/qm/librecad_pl.qm
 share/librecad/qm/librecad_pt_br.qm
+share/librecad/qm/librecad_pt_pt.qm
 share/librecad/qm/librecad_ru.qm
 share/librecad/qm/librecad_sk.qm
 share/librecad/qm/librecad_sq_al.qm
