@@ -4,7 +4,7 @@ COMMENT =	Qt-based 2D CAD system
 
 V =		20120301
 DISTNAME =	librecad-$V
-PKGNAME =	librecad-1.0.0.$V
+PKGNAME =	librecad-1.0.1.$V
 CATEGORIES =	cad graphics
 
 HOMEPAGE =	http://librecad.org/
