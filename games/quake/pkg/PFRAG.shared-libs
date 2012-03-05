@@ -6,6 +6,7 @@
 @lib lib/libQFjs.so.${LIBQFjs_VERSION}
 @lib lib/libQFmodels.so.${LIBQFmodels_VERSION}
 @lib lib/libQFmodels_gl.so.${LIBQFmodels_gl_VERSION}
+@lib lib/libQFmodels_glsl.so.${LIBQFmodels_glsl_VERSION}
 @lib lib/libQFmodels_sw.so.${LIBQFmodels_sw_VERSION}
 @lib lib/libQFruamoko.so.${LIBQFruamoko_VERSION}
 @lib lib/libQFsound.so.${LIBQFsound_VERSION}

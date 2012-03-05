@@ -5,10 +5,10 @@ COMMENT-libs =		Quake common libs
 COMMENT-server =	QuakeWorld server
 
 # .so.1.0
-SOMAJOR =		0
+SOMAJOR =		1
 SOMINOR =		0
-V =			0.6.2.20120302
-DISTNAME =		quakeforge-20120302
+V =			0.6.2.20120303
+DISTNAME =		quakeforge-20120303
 PKGNAME-main =		quake-$V
 PKGNAME-libs =		quake-libs-$V
 FULLPKGNAME-server =	quakeworld-server-$V
@@ -26,6 +26,7 @@ SHARED_LIBS +=		QFimage		${SOMAJOR}.${SOMINOR}
 SHARED_LIBS +=		QFjs		${SOMAJOR}.${SOMINOR}
 SHARED_LIBS +=		QFmodels	${SOMAJOR}.${SOMINOR}
 SHARED_LIBS +=		QFmodels_gl	${SOMAJOR}.${SOMINOR}
+SHARED_LIBS +=		QFmodels_glsl	${SOMAJOR}.${SOMINOR}
 SHARED_LIBS +=		QFmodels_sw	${SOMAJOR}.${SOMINOR}
 SHARED_LIBS +=		QFruamoko	${SOMAJOR}.${SOMINOR}
 SHARED_LIBS +=		QFsound		${SOMAJOR}.${SOMINOR}
@@ -44,13 +45,13 @@ PERMIT_DISTFILES_CDROM =Yes
 PERMIT_DISTFILES_FTP =	Yes
 
 WANTLIB-main += QFcd QFconsole QFgib QFimage QFjs QFmodels
-WANTLIB-main += QFmodels_gl QFmodels_sw
+WANTLIB-main += QFmodels_gl QFmodels_glsl QFmodels_sw
 WANTLIB-main += QFruamoko QFsound QFutil SDL X11 Xext Xxf86dga Xxf86vm
-WANTLIB-main += c crypto idn m ncurses png pthread sndio ssl usbhid
-WANTLIB-main += xcb z curl ${MODGETTEXT_WANTLIB}
+WANTLIB-main += Xrandr Xrender c crypto idn m ncurses png pthread sndio
+WANTLIB-main += ssl usbhid xcb z curl ${MODGETTEXT_WANTLIB}
 
 WANTLIB-libs += FLAC SDL m ncurses ogg png samplerate sndio usbhid
-WANTLIB-libs += vorbis vorbisfile z iconv
+WANTLIB-libs += vorbis vorbisfile z iconv Xrandr Xrender
 
 WANTLIB-server += QFconsole QFgib QFimage QFmodels QFruamoko
 WANTLIB-server += QFutil c m ncurses png pthread z
@@ -74,9 +75,7 @@ LIB_DEPENDS-libs =	audio/flac \
 
 USE_LIBTOOL =		Yes
 CONFIGURE_STYLE =	gnu
-CONFIGURE_ARGS +=	--with-clients=glx,sdl,sdl32,sgl,x11 \
-			--with-gl-driver=libGL.so \
-			--with-cd-default=SDL \
+CONFIGURE_ARGS +=	--with-cd-default=sdl \
 			--with-sharepath=${PREFIX}/share/quakeforge \
 			--enable-version-info=${SOMAJOR}:${SOMINOR} \
 			--disable-asmopt \
