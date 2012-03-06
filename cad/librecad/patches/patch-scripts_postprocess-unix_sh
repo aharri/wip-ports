@@ -1,9 +1,0 @@
-$OpenBSD$
---- scripts/postprocess-unix.sh.orig	Fri Mar  2 17:29:33 2012
-+++ scripts/postprocess-unix.sh	Fri Mar  2 17:29:09 2012
-@@ -1,4 +1,4 @@
--#!/bin/bash -x
-+#!/bin/sh
- 
- THISDIR="`pwd`"
- LCDIR="${THISDIR}/librecad"
