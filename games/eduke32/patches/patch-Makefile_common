@@ -1,0 +1,11 @@
+$OpenBSD$
+--- Makefile.common.orig	Wed Mar  7 09:48:09 2012
++++ Makefile.common	Wed Mar  7 09:48:29 2012
+@@ -89,7 +89,6 @@ endif
+ 
+ ifneq (0,$(RELEASE))
+     # Debugging disabled
+-    debug+= -O$(OPTLEVEL)
+     ifneq ($(CC),clang)
+         debug+= -funswitch-loops
+     endif
