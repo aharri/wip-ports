@@ -38,19 +38,21 @@ PERMIT_DISTFILES_CDROM =Yes
 PERMIT_DISTFILES_FTP =	Yes
 
 WANTLIB-main =		GL c m pthread sndio ogg>=5 SDL>=7 vorbis>=7 \
-			vorbisfile>=5
+			vorbisfile>=5 curl
 WANTLIB-server =	c m
 
 LIB_DEPENDS-main =	audio/libogg \
+			audio/libvorbis \
 			devel/sdl \
-			audio/libvorbis
+			net/curl
 RUN_DEPENDS-main =	${BASE_PKGPATH},-data
 RUN_DEPENDS-server =	${BASE_PKGPATH},-data
 
 ALL_TARGET =		release
 USE_GMAKE =		Yes
 MAKE_FLAGS =		USE_OPENAL=0 \
-			BINEXT='' \
+			FULLBINEXT='' \
+			V=1 \
 			DEFAULT_BASEDIR=${LOCALBASE}/share/openarena
 
 WRKDIST =		${WRKDIR}/openarena-engine-source-${E_V}
