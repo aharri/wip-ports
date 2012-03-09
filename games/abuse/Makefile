@@ -5,7 +5,7 @@ COMMENT =	SDL port of the legendary 2D platform shooter
 DISTNAME =	abuse-free-0.8
 PKGNAME =	abuse-0.8
 EPOCH =		0
-ABUSE_SFX =	abuse-free-sounds-20110523
+ABUSE_SFX =	abuse-free-sounds-20120309
 CATEGORIES =	games x11
 
 HOMEPAGE =	http://abuse.zoy.org/
@@ -19,14 +19,18 @@ PERMIT_PACKAGE_FTP =	Yes
 PERMIT_DISTFILES_CDROM =Yes
 PERMIT_DISTFILES_FTP =	Yes
 
-WANTLIB =	c m pthread GL stdc++ usbhid SDL sndio X11 Xau Xdamage \
-		Xdmcp Xext Xfixes Xxf86vm drm pthread-stubs xcb \
-		FLAC SDL_mixer mikmod ogg smpeg vorbis vorbisfile
+WANTLIB += FLAC GL SDL SDL_mixer X11 Xext Xrandr Xrender c iconv
+WANTLIB += m mikmod ogg pthread smpeg sndio stdc++ usbhid vorbis
+WANTLIB += vorbisfile xcb
 
 MASTER_SITES =	${HOMEPAGE}raw-attachment/wiki/download/
-MASTER_SITES0 =	http://devio.us/~iku/dist/
+MASTER_SITES0 =	http://openbsd.fi/dist/
 
 MODULES =	converters/libiconv
+# Needs AC_PROG_LIBTOOL
+BUILD_DEPENDS =	devel/libtool \
+		${MODGNU_AUTOCONF_DEPENDS} \
+		${MODGNU_AUTOMAKE_DEPENDS}
 RUN_DEPENDS = 	audio/timidity
 LIB_DEPENDS =	devel/sdl \
 		devel/sdl-mixer \
@@ -41,14 +45,26 @@ DISTFILES = 	${DISTNAME}.tar.gz \
 
 USE_LIBTOOL =	Yes
 
-MAKE_FLAGS = 		CXXFLAGS="${CFLAGS}"
 CONFIGURE_STYLE =	gnu
 CONFIGURE_ARGS =	--enable-release \
 			--disable-nonfree \
 			--with-assetdir=${PREFIX}/share/abuse \
 			--datadir=${PREFIX}/share/abuse
+AUTOMAKE_VERSION =	1.11
+AUTOCONF_VERSION =	2.68
 
 NO_REGRESS =	Yes
+
+post-patch:
+	cd "${WRKSRC}" && \
+		find "${WRKDIR}/${ABUSE_SFX}/patches/" -name 'patch-*' \
+		-exec patch -z .afs-orig -i {} \;
+
+pre-configure:
+	cd ${WRKSRC} && \
+		AUTOMAKE_VERSION=${AUTOMAKE_VERSION} \
+		AUTOCONF_VERSION=${AUTOCONF_VERSION} \
+		autoreconf -fi
 
 post-install:
 	${INSTALL_DATA_DIR} ${PREFIX}/share/abuse/sfx
