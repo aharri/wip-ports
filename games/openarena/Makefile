@@ -48,14 +48,15 @@ LIB_DEPENDS-main =	audio/libogg \
 RUN_DEPENDS-main =	${BASE_PKGPATH},-data
 RUN_DEPENDS-server =	${BASE_PKGPATH},-data
 
-ALL_TARGET =		release
 USE_GMAKE =		Yes
 MAKE_FLAGS =		USE_OPENAL=0 \
 			FULLBINEXT='' \
 			V=1 \
 			DEFAULT_BASEDIR=${LOCALBASE}/share/openarena
 
+NO_REGRESS =		Yes
 WRKDIST =		${WRKDIR}/openarena-engine-source-${E_V}
+ALL_TARGET =		release
 
 post-extract:
 	find ${WRKDIR} -name '*.orig' -print0 | xargs -0r rm -f

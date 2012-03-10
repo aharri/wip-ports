@@ -1,4 +1,4 @@
-# $OpenBSD: ports/games/openxcom/Makefile,v 1.3 2012/02/29 08:25:32 ajacoutot Exp $
+# $OpenBSD: ports/games/openxcom/Makefile,v 1.4 2012/03/05 17:57:21 nigel Exp $
 
 COMMENT =		open source reimplementation of the original X-Com
 DISTNAME =		openxcom-20120217
@@ -25,6 +25,7 @@ LIB_DEPENDS =		devel/sdl-gfx \
 			devel/sdl-mixer \
 			devel/yaml-cpp
 
+SEPARATE_BUILD =	Yes
 CONFIGURE_ARGS =	-DDEV_BUILD=Off
 
 NO_REGRESS =		Yes

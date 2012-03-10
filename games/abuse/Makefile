@@ -43,6 +43,7 @@ LIB_DEPENDS =	devel/sdl \
 DISTFILES = 	${DISTNAME}.tar.gz \
 		${ABUSE_SFX}.tar.gz:0
 
+SEPARATE_BUILD =Yes
 USE_LIBTOOL =	Yes
 
 CONFIGURE_STYLE =	gnu
