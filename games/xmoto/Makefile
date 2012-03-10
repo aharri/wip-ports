@@ -21,13 +21,13 @@ PERMIT_DISTFILES_FTP =	Yes
 WANTLIB += GL GLU SDL SDL_mixer SDL_net SDL_ttf X11 bz2 c curl jpeg 
 WANTLIB += lua m ode png pthread sqlite3 stdc++ xdg-basedir xml2 z 
 
-
 MODULES=	devel/gettext
 BUILD_DEPENDS = ${MODGNU_AUTOCONF_DEPENDS} \
 		${MODGNU_AUTOMAKE_DEPENDS}
 LIB_DEPENDS =	archivers/bzip2 \
 		databases/sqlite3 \
 		devel/ode \
+		devel/sdl \
 		devel/sdl-mixer \
 		devel/sdl-net \
 		devel/sdl-ttf \
@@ -40,22 +40,16 @@ LIB_DEPENDS =	archivers/bzip2 \
 
 SEPARATE_BUILD =	Yes
 USE_GROFF =		Yes
+
 CONFIGURE_STYLE =	gnu
-# XXX fix that ugly mess of variables
-CONFIGURE_ENV =		CPPFLAGS="
-			-I${LOCALBASE}/include
-			-I${X11BASE}/include \
-			-I${LOCALBASE}/include/libpng
-			-DSVN_REV=\\\"${V}\\\"" \
-			LDFLAGS="
-			-L${LOCALBASE}/lib
-			-L${X11BASE}/lib
-			-pthread" \
-			LIBS="-lGL -lm"
+CONFIGURE_ENV =		CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
 AUTOMAKE_VERSION =	1.11
 AUTOCONF_VERSION =	2.68
 
 NO_REGRESS =		Yes
+
+CPPFLAGS =		`pkg-config --cflags libpng sqlite3 sdl` -DSVN_REV='\"${V}\"'
+LDFLAGS =		`pkg-config --libs libpng sdl` -lGL
 WRKDIST =		${WRKDIR}/${DISTNAME:S/-src//}
 
 pre-configure:
