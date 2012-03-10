@@ -21,7 +21,8 @@ MASTER_SITES =		http://openbsd.fi/dist/
 MODULES =		devel/cmake
 
 RUN_DEPENDS =		audio/timidity
-LIB_DEPENDS =		devel/sdl-gfx \
+LIB_DEPENDS =		devel/sdl \
+			devel/sdl-gfx \
 			devel/sdl-mixer \
 			devel/yaml-cpp
 
