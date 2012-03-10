@@ -23,7 +23,8 @@ WANTLIB += lua m ode png pthread sqlite3 stdc++ xdg-basedir xml2 z
 
 
 MODULES=	devel/gettext
-
+BUILD_DEPENDS = ${MODGNU_AUTOCONF_DEPENDS} \
+		${MODGNU_AUTOMAKE_DEPENDS}
 LIB_DEPENDS =	archivers/bzip2 \
 		databases/sqlite3 \
 		devel/ode \
