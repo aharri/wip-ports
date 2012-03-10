@@ -1,12 +1,11 @@
 List of ports:
 
 archivers/gnugzip
+audio/openal
 cad/librecad
 cad/coin3d
 cad/freecad
 cad/opencascade
-devel/sdl
-devel/yaml-cpp
 devel/clanlib
 devel/libchipmunk
 games/openxcom
@@ -30,6 +29,7 @@ games/eduke32
 games/tkb
 games/tyrquake
 graphics/freeimage
+net/pktstat
 net/rsyncrypto
 sysutils/ohtools
 x11/soqt
