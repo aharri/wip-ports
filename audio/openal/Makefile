@@ -2,7 +2,7 @@
 
 COMMENT =	cross-platform 3D audio API
 
-V =		20110627
+V =		20120311
 DISTNAME =	openal-soft-$V
 PKGNAME =	openal-$V
 CATEGORIES =	audio
@@ -30,7 +30,8 @@ CONFIGURE_ARGS =-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"	\
 		-DPORTAUDIO=Off				\
 		-DSOLARIS=Off				\
 		-DALSA=Off				\
-		-DOSS=Off
+		-DOSS=Off				\
+		-DEXAMPLES=Off
 
 MODULES =	devel/cmake
 
