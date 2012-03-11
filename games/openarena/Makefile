@@ -19,7 +19,6 @@ PKGNAME-server =	openarena-server-${V}
 PKGNAME-data =		openarena-data-${V}
 
 PKG_ARCH-data = 	*
-REVISION-data=		0
 
 DISTNAME =		openarena-${V}
 DISTFILES =		${DISTNAME}.zip openarena-engine-source-${E_V}.tar.bz2:0
