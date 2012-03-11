@@ -12,7 +12,16 @@ BUGS
      both read and write permissions on the underlying object.
 
 --- code/qcommon/vm_x86.c.orig	Sat Dec 24 14:29:32 2011
-+++ code/qcommon/vm_x86.c	Tue Mar  6 23:44:58 2012
++++ code/qcommon/vm_x86.c	Sun Mar 11 15:22:08 2012
+@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston,
+ 
+ /* need this on NX enabled systems (i386 with PAE kernel or
+  * noexec32=on x86_64) */
+-#if defined(__linux__) || defined(__FreeBSD__)
++#if defined(__linux__) || defined(__FreeBSD__) || defined(__OpenBSD__)
+ #define VM_X86_MMAP
+ #endif
+ 
 @@ -1094,7 +1094,7 @@ void VM_Compile( vm_t *vm, vmHeader_t *header ) {
  	// copy to an exact size buffer on the hunk
  	vm->codeLength = compiledOfs;

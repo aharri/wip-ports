@@ -1,6 +1,6 @@
 $OpenBSD: ports/games/openarena/patches/patch-Makefile,v 1.3 2010/05/27 03:47:28 jakemsr Exp $
 --- Makefile.orig	Tue Dec 13 00:48:49 2011
-+++ Makefile	Wed Mar  7 10:28:13 2012
++++ Makefile	Wed Mar  7 11:21:26 2012
 @@ -164,13 +164,14 @@ endif
  
  #############################################################################
@@ -33,16 +33,17 @@ $OpenBSD: ports/games/openarena/patches/patch-Makefile,v 1.3 2010/05/27 03:47:28
    CLIENT_CFLAGS = $(SDL_CFLAGS)
    SERVER_CFLAGS = 
  
-@@ -663,7 +664,7 @@ ifeq ($(PLATFORM),openbsd)
+@@ -662,8 +663,7 @@ ifeq ($(PLATFORM),openbsd)
+     USE_CURL_DLOPEN=0
    endif
  
-   BASE_CFLAGS += -DNO_VM_COMPILED
+-  BASE_CFLAGS += -DNO_VM_COMPILED
 -  HAVE_VM_COMPILED=false
 +  HAVE_VM_COMPILED=true
  
    SHLIBEXT=so
    SHLIBNAME=.$(SHLIBEXT)
-@@ -675,11 +676,12 @@ ifeq ($(PLATFORM),openbsd)
+@@ -675,11 +675,12 @@ ifeq ($(PLATFORM),openbsd)
  
    CLIENT_LIBS =
  
@@ -57,7 +58,7 @@ $OpenBSD: ports/games/openarena/patches/patch-Makefile,v 1.3 2010/05/27 03:47:28
      endif
    endif
  
-@@ -851,11 +853,11 @@ ifndef SHLIBNAME
+@@ -851,11 +852,11 @@ ifndef SHLIBNAME
  endif
  
  ifneq ($(BUILD_SERVER),0)
@@ -71,7 +72,7 @@ $OpenBSD: ports/games/openarena/patches/patch-Makefile,v 1.3 2010/05/27 03:47:28
    ifneq ($(BUILD_CLIENT_SMP),0)
      TARGETS += $(B)/openarena-smp$(FULLBINEXT)
    endif
-@@ -1471,8 +1473,9 @@ Q3OBJ = \
+@@ -1471,8 +1472,9 @@ Q3OBJ = \
    \
    $(B)/client/sdl_gamma.o \
    $(B)/client/sdl_input.o \
@@ -82,7 +83,7 @@ $OpenBSD: ports/games/openarena/patches/patch-Makefile,v 1.3 2010/05/27 03:47:28
    $(B)/client/con_passive.o \
    $(B)/client/con_log.o \
    $(B)/client/sys_main.o
-@@ -1597,7 +1600,7 @@ Q3POBJ += \
+@@ -1597,7 +1599,7 @@ Q3POBJ += \
  Q3POBJ_SMP += \
    $(B)/clientsmp/sdl_glimp.o
  
@@ -91,7 +92,7 @@ $OpenBSD: ports/games/openarena/patches/patch-Makefile,v 1.3 2010/05/27 03:47:28
  	$(echo_cmd) "LD $@"
  	$(Q)$(CC) $(CLIENT_CFLAGS) $(CFLAGS) $(CLIENT_LDFLAGS) $(LDFLAGS) \
  		-o $@ $(Q3OBJ) $(Q3POBJ) \
-@@ -1756,7 +1759,7 @@ ifeq ($(PLATFORM),darwin)
+@@ -1756,7 +1758,7 @@ ifeq ($(PLATFORM),darwin)
      $(B)/ded/sys_osx.o
  endif
  
@@ -100,7 +101,7 @@ $OpenBSD: ports/games/openarena/patches/patch-Makefile,v 1.3 2010/05/27 03:47:28
  	$(echo_cmd) "LD $@"
  	$(Q)$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(Q3DOBJ) $(LIBS)
  
-@@ -2076,6 +2079,9 @@ $(B)/client/%.o: $(ZDIR)/%.c
+@@ -2076,6 +2078,9 @@ $(B)/client/%.o: $(ZDIR)/%.c
  $(B)/client/%.o: $(RDIR)/%.c
  	$(DO_CC)
  
@@ -110,7 +111,7 @@ $OpenBSD: ports/games/openarena/patches/patch-Makefile,v 1.3 2010/05/27 03:47:28
  $(B)/client/%.o: $(SDLDIR)/%.c
  	$(DO_CC)
  
-@@ -2223,7 +2229,7 @@ copyfiles: release
+@@ -2223,7 +2228,7 @@ copyfiles: release
  	-$(MKDIR) -p -m 0755 $(COPYDIR)/missionpack
  
  ifneq ($(BUILD_CLIENT),0)
@@ -119,7 +120,7 @@ $OpenBSD: ports/games/openarena/patches/patch-Makefile,v 1.3 2010/05/27 03:47:28
  endif
  
  # Don't copy the SMP until it's working together with SDL.
-@@ -2233,7 +2239,7 @@ endif
+@@ -2233,7 +2238,7 @@ endif
  
  ifneq ($(BUILD_SERVER),0)
  	@if [ -f $(BR)/oa_ded$(FULLBINEXT) ]; then \

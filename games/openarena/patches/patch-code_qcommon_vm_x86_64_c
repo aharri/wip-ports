@@ -12,7 +12,7 @@ BUGS
      both read and write permissions on the underlying object.
 
 --- code/qcommon/vm_x86_64.c.orig	Sat Dec 24 14:29:32 2011
-+++ code/qcommon/vm_x86_64.c	Tue Mar  6 23:44:58 2012
++++ code/qcommon/vm_x86_64.c	Sun Mar 11 15:22:24 2012
 @@ -445,7 +445,7 @@ void VM_Compile( vm_t *vm, vmHeader_t *header ) {
  		vm->codeLength = compiledOfs;
  
