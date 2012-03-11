@@ -1,4 +1,4 @@
-# $OpenBSD: ports/games/openarena/Makefile,v 1.12 2011/07/15 07:33:16 jasper Exp $
+# $OpenBSD: ports/games/openarena/Makefile,v 1.13 2012/03/08 12:13:01 ajacoutot Exp $
 
 ONLY_FOR_ARCHS =	amd64 i386 macppc
 
