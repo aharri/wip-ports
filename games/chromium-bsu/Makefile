@@ -13,8 +13,8 @@ PERMIT_PACKAGE_FTP =	Yes
 PERMIT_DISTFILES_CDROM =Yes
 PERMIT_DISTFILES_FTP =	Yes
 
-WANTLIB =		GL GLU X11 alut c expat fontconfig freetype ftgl glpng \
-			openal pthread stdc++ z m SDL SDL_image
+WANTLIB += GL GLU SDL SDL_image X11 alut c expat fontconfig freetype
+WANTLIB += ftgl glpng intl m openal png pthread stdc++ z
 
 MASTER_SITES =		${MASTER_SITE_SOURCEFORGE:=chromium-bsu/}
 
@@ -26,9 +26,10 @@ LIB_DEPENDS =		graphics/ftgl	\
 			devel/sdl	\
 			devel/sdl-image
 
+SEPARATE_BUILD =	Yes
+
 CONFIGURE_STYLE =	gnu
-CONFIGURE_ARGS =	--disable-sdl
-CONFIGURE_ENV =		LDFLAGS="-L${PREFIX}/lib -lz"
+CONFIGURE_ENV =		LDFLAGS="`pkg-config --libs sdl libpng` -liconv"
 
 NO_REGRESS =		Yes
 
