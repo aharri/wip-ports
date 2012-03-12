@@ -3,8 +3,6 @@
 @man man/man6/chromium-bsu.6
 share/applications/
 share/applications/chromium-bsu.desktop
-@exec %D/bin/update-desktop-database
-@unexec %D/bin/update-desktop-database
 share/chromium-bsu/
 share/chromium-bsu/png/
 share/chromium-bsu/png/check.png
@@ -104,3 +102,5 @@ share/locale/sv/LC_MESSAGES/chromium-bsu.mo
 share/locale/zh_TW/LC_MESSAGES/chromium-bsu.mo
 share/pixmaps/
 share/pixmaps/chromium-bsu.png
+@exec %D/bin/update-desktop-database
+@unexec %D/bin/update-desktop-database

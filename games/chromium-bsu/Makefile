@@ -19,11 +19,10 @@ WANTLIB += ftgl glpng intl m openal png pthread stdc++ z
 MASTER_SITES =		${MASTER_SITE_SOURCEFORGE:=chromium-bsu/}
 
 MODULES =		devel/gettext
+RUN_DEPENDS =		devel/desktop-file-utils
 LIB_DEPENDS =		graphics/ftgl	\
 			graphics/glpng	\
 			audio/freealut	\
-			audio/openal	\
-			devel/sdl	\
 			devel/sdl-image
 
 SEPARATE_BUILD =	Yes
