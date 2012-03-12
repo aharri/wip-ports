@@ -27,7 +27,6 @@ BUILD_DEPENDS = ${MODGNU_AUTOCONF_DEPENDS} \
 LIB_DEPENDS =	archivers/bzip2 \
 		databases/sqlite3 \
 		devel/ode \
-		devel/sdl \
 		devel/sdl-mixer \
 		devel/sdl-net \
 		devel/sdl-ttf \
