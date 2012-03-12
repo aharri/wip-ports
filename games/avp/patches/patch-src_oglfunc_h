@@ -1,0 +1,23 @@
+$OpenBSD$
+--- src/oglfunc.h.orig	Mon Mar 12 16:29:04 2012
++++ src/oglfunc.h	Mon Mar 12 16:29:15 2012
+@@ -34,7 +34,9 @@ typedef void (APIENTRY *PFNGLDISABLECLIENTSTATEPROC)(G
+ typedef void (APIENTRY *PFNGLDRAWBUFFERPROC)(GLenum);
+ typedef void (APIENTRY *PFNGLDRAWELEMENTSPROC)(GLenum, GLsizei, GLenum, const GLvoid *);
+ typedef void (APIENTRY *PFNGLDRAWPIXELSPROC)(GLsizei, GLsizei, GLenum, GLenum, const GLvoid *);
++#ifndef __OpenBSD__
+ typedef void (APIENTRY *PFNGLDRAWRANGEELEMENTSPROC)(GLenum, GLuint, GLuint, GLsizei, GLenum, const GLvoid *);
++#endif
+ typedef void (APIENTRY *PFNGLENABLEPROC)(GLenum);
+ typedef void (APIENTRY *PFNGLENABLECLIENTSTATEPROC)(GLenum);
+ typedef void (APIENTRY *PFNGLENDPROC)(GLvoid);
+@@ -143,7 +145,9 @@ extern PFNGLDEPTHRANGEPROC		pglDepthRange;
+ extern PFNGLDISABLEPROC		pglDisable;
+ extern PFNGLDISABLECLIENTSTATEPROC	pglDisableClientState;
+ extern PFNGLDRAWBUFFERPROC		pglDrawBuffer;
++#ifndef __OpenBSD__
+ extern PFNGLDRAWELEMENTSPROC		pglDrawElements;
++#endif
+ extern PFNGLDRAWPIXELSPROC		pglDrawPixels;
+ extern PFNGLDRAWRANGEELEMENTSPROC	pglDrawRangeElements;
+ extern PFNGLENABLEPROC			pglEnable;

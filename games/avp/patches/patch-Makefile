@@ -1,0 +1,18 @@
+$OpenBSD$
+--- Makefile.orig	Sun Nov 22 03:17:58 2009
++++ Makefile	Mon Mar 12 16:35:25 2012
+@@ -1,12 +1,13 @@
+ CC = gcc
+ CXX = g++
+ 
+-CFLAGS = -m32 -g -Wall -pipe
++CFLAGS ?= -m32 -g -Wall -pipe
+ #CFLAGS += -O2
+ #CFLAGS += -DNDEBUG -O6 -ffast-math -fomit-frame-pointer -march=pentium3 -mtune=pentium4
+ 
+ CFLAGS += -Isrc -Isrc/include -Isrc/win95 -Isrc/avp -Isrc/avp/win95 -Isrc/avp/support -Isrc/avp/win95/frontend -Isrc/avp/win95/gadgets
+ CFLAGS += $(shell sdl-config --cflags) $(shell pkg-config openal --cflags)
++CXXFLAGS ?=
+ CXXFLAGS = $(CFLAGS)
+ 
+ LDLIBS = -m32 $(shell sdl-config --libs) $(shell pkg-config openal --libs)
