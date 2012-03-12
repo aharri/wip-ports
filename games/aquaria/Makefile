@@ -30,7 +30,7 @@ CONFIGURE_ARGS =	-DCMAKE_BUILD_TYPE:String=Release
 NO_REGRESS =		Yes
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/aquaria ${PREFIX}/bin/
+	${INSTALL_PROGRAM} ${WRKBUILD}/aquaria ${PREFIX}/bin/
 	${INSTALL_DATA_DIR} ${PREFIX}/share/aquaria
 	cd ${PREFIX}/share/aquaria && cp -r ${WRKSRC}/game_scripts/* .
 
