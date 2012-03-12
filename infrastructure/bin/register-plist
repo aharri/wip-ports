@@ -1,6 +1,6 @@
 #! /usr/bin/perl
 
-# $OpenBSD: ports/infrastructure/bin/register-plist,v 1.5 2010/12/29 12:33:38 espie Exp $
+# $OpenBSD: ports/infrastructure/bin/register-plist,v 1.6 2011/11/11 11:35:32 espie Exp $
 # Copyright (c) 2005
 # Marc Espie.  All rights reserved.
 # Redistribution and use in source and binary forms, with or without
@@ -473,7 +473,6 @@ sub compare_versions
 		if ($c < 0) {
 			$state->errsay("Found newer package #1 in #2", 
 			    $p2->pkgname, $dir);
-			$result = 1;
 		} elsif ($c == 0) {
 			$state->errsay("Found package with different name that compares equal in #2: #1", 
 			    $p2->pkgname, $dir);
@@ -542,7 +541,7 @@ for my $pkgfile (@ARGV) {
 	for my $dir (@dirs) {
 		next unless -d $dir;
 		my $result = $dir.'/'.$plist->pkgname;
-		if (-f $result) {
+		if (-f $result && -s _) {
 			my $plist2 = OpenBSD::PackingList->fromfile($result);
 			$error += compare_lists($plist, $plist2, $result,
 			    $state);
@@ -552,7 +551,7 @@ for my $pkgfile (@ARGV) {
 	}
 	if (!$error) {
 		my $result = $dirs[0].'/'.$plist->pkgname;
-		if (!-f $result) {
+		if (!-f $result || -z _) {
 			$plist->tofile($result);
 		}
 	}
