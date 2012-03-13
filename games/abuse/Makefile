@@ -19,9 +19,9 @@ PERMIT_PACKAGE_FTP =	Yes
 PERMIT_DISTFILES_CDROM =Yes
 PERMIT_DISTFILES_FTP =	Yes
 
-WANTLIB += FLAC GL SDL SDL_mixer X11 Xext Xrandr Xrender c iconv
-WANTLIB += m mikmod ogg pthread smpeg sndio stdc++ usbhid vorbis
-WANTLIB += vorbisfile xcb
+WANTLIB += FLAC GL SDL SDL_mixer X11 Xdamage Xext Xfixes Xrandr
+WANTLIB += Xrender Xxf86vm c drm iconv m mikmod ogg pthread smpeg
+WANTLIB += sndio stdc++ usbhid vorbis vorbisfile xcb
 
 MASTER_SITES =	${HOMEPAGE}raw-attachment/wiki/download/
 MASTER_SITES0 =	http://openbsd.fi/dist/
@@ -32,8 +32,7 @@ BUILD_DEPENDS =	devel/libtool \
 		${MODGNU_AUTOCONF_DEPENDS} \
 		${MODGNU_AUTOMAKE_DEPENDS}
 RUN_DEPENDS = 	audio/timidity
-LIB_DEPENDS =	devel/sdl \
-		devel/sdl-mixer \
+LIB_DEPENDS =	devel/sdl-mixer \
 		devel/smpeg \
 		audio/flac \
 		audio/libogg \
