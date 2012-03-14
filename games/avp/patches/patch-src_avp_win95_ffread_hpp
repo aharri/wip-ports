@@ -1,0 +1,12 @@
+$OpenBSD$
+--- src/avp/win95/ffread.hpp.orig	Tue Mar 13 20:54:12 2012
++++ src/avp/win95/ffread.hpp	Tue Mar 13 20:54:22 2012
+@@ -79,7 +79,7 @@ class FFHeaderI
+ {
+ private:
+ 	char * filename;
+-	void * data;
++	uint8_t * data;
+ 	size_t length;
+ 	List<FFDataI> files [FFHI_HASHTABLESIZE]; // hash table
+ 	

@@ -1,0 +1,79 @@
+$OpenBSD$
+--- src/files.c.orig	Sun Nov 22 03:17:58 2009
++++ src/files.c	Tue Mar 13 16:34:37 2012
+@@ -99,7 +99,9 @@ FILE *OpenGameFile(const char *filename, int mode, int
+ 	char *rfilename;
+ 	char *openmode;
+ 	FILE *fp;
+-	
++
++	printf("OpenGameFile: opening %s\n", filename);
++
+ 	if ((type != FILETYPE_CONFIG) && (mode != FILEMODE_READONLY)) 
+ 		return NULL;
+ 	
+@@ -125,9 +127,9 @@ FILE *OpenGameFile(const char *filename, int mode, int
+ 		
+ 		fp = fopen(rfilename, openmode);
+ 		
+-		free(rfilename);
+-		
+ 		if (fp != NULL) {
++			printf("OpenGameFile(1): succesfully opened %s\n", rfilename);
++			free(rfilename);
+ 			return fp;
+ 		}
+ 		
+@@ -135,9 +137,9 @@ FILE *OpenGameFile(const char *filename, int mode, int
+ 		
+ 		fp = fopen(rfilename, openmode);
+ 		
+-		free(rfilename);
+-		
+ 		if (fp != NULL) {
++			printf("OpenGameFile(2): succesfully opened %s\n", rfilename);
++			free(rfilename);
+ 			return fp;
+ 		}
+ 	}
+@@ -147,9 +149,9 @@ FILE *OpenGameFile(const char *filename, int mode, int
+ 		
+ 		fp = fopen(rfilename, openmode);
+ 		
+-		free(rfilename);
+-		
+ 		if (fp != NULL) {
++			printf("OpenGameFile(3): succesfully opened %s\n", rfilename);
++			free(rfilename);
+ 			return fp;
+ 		}
+ 		
+@@ -157,8 +159,8 @@ FILE *OpenGameFile(const char *filename, int mode, int
+ 		
+ 		fp = fopen(rfilename, openmode);
+ 		
++		printf("OpenGameFile(4): succesfully opened %s\n", rfilename);
+ 		free(rfilename);
+-		
+ 		return fp;
+ 	}
+ 	
+@@ -545,7 +547,8 @@ static int try_game_directory(char *dir, char *file)
+ 	strncpy(tmppath, dir, PATH_MAX-32);
+ 	tmppath[PATH_MAX-32] = 0;
+ 	strcat(tmppath, file);
+-	
++
++	printf("Trying to access file: %s\n", tmppath);
+ 	return access(tmppath, R_OK) == 0;
+ }
+ 
+@@ -573,7 +576,7 @@ static int check_game_directory(char *dir)
+ 	if (!try_game_directory(dir, "/avp_rifs/temple.rif")) {
+ 		return 0;
+ 	}
+-	
++
+ 	if (!try_game_directory(dir, "/fastfile")) {
+ 		return 0;
+ 	}

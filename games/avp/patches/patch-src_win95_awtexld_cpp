@@ -1,0 +1,12 @@
+$OpenBSD$
+--- src/win95/awtexld.cpp.orig	Tue Mar 13 15:58:08 2012
++++ src/win95/awtexld.cpp	Tue Mar 13 15:57:13 2012
+@@ -93,7 +93,7 @@ namespace AwTl
+ 	#define BREAKPOINT db_code5(::AwTl::BrkPt();)
+ 	
+ 	#if DB_LEVEL > 4
+-	static unsigned GetRefCount(IUnknown * pUnknown)
++	static unsigned GetRefCount(void * pUnknown)
+ 	{
+ #if 0
+ 		if (!pUnknown) return 0;

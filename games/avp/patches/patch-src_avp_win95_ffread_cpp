@@ -1,0 +1,209 @@
+$OpenBSD$
+--- src/avp/win95/ffread.cpp.orig	Sun Nov 22 03:17:58 2009
++++ src/avp/win95/ffread.cpp	Tue Mar 13 21:01:06 2012
+@@ -68,6 +68,7 @@ void ReportError(char const * mesg1, char const * mesg
+ 	}
+ 	
+ 	// Display the string.
++	printf("error %08x: %s\n", err, mesg);
+ 	fail("----------ERROR:%08x-----------\n\n%s\n\n",err,mesg);
+    
+    	// Free the buffer.
+@@ -84,14 +85,14 @@ void ReportError(char const * mesg1, char const * mesg
+ 		ReportError(fname); \
+ 		post_proc; \
+ 		on_return; \
+-		return FF_COULDNOTWRITEFILE; \
++		return FF_COULDNOTREADFILE; \
+ 	} \
+ 	else if (n_bytes_read != n_bytes) \
+ 	{ \
+-		ReportError(fname,"Could not write the correct number of bytes"); \
++		ReportError(fname,"Could not read the correct number of bytes"); \
+ 		post_proc; \
+ 		on_return; \
+-		return FF_COULDNOTWRITEFILE; \
++		return FF_COULDNOTREADFILE; \
+ 	} \
+ 	else post_proc;
+ 	
+@@ -187,12 +188,19 @@ FFHeaderI::FFHeaderI(char const *_filename,BOOL _shoul
+ , length(0)
+ ,should_be_kept(_should_be_kept)
+ {
++	int len=0;
+ 	if (_filename)
+ 	{
++		//printf("sizeof(filename): %i sizeof(_filename): %i\n", sizeof(&filename), sizeof(&_filename));
++		//printf("strlen(filename): %i strlen(_filename): %i\n", strlen(filename), strlen(_filename));
+ 		filename = new char [strlen(_filename) + 1];
+ 		strcpy(filename,_filename);
+-				
+-		Read();
++		printf("filename: \"%s\" _filename: \"%s\"\n", filename, _filename);
++
++		printf("FFHeaderI::FFHeaderI: Trying to read %s\n", filename);
++		Read(_filename);
++	} else {
++		printf("FFHeaderI::FFHeaderI: No filename given\n");
+ 	}
+ }
+ 
+@@ -209,7 +217,8 @@ FFHeaderI::FFHeaderI(FFHeaderI const & ffh)
+ 	}
+ 	if (ffh.data)
+ 	{
+-		data = malloc(length);
++		//data = malloc(length);
++		data = new uint8_t[length];
+ 		memcpy(data,ffh.data,length);
+ 	}
+ 	ptrdiff_t offset = (size_t)data - (size_t)ffh.data;
+@@ -226,7 +235,7 @@ FFHeaderI & FFHeaderI::operator = (FFHeaderI const & f
+ {
+ 	if (&ffh != this)
+ 	{
+-		if (data) free(data);
++		if (data) delete[] data;
+ 		if (filename) delete[] filename;
+ 		
+ 		filename = 0;
+@@ -240,7 +249,8 @@ FFHeaderI & FFHeaderI::operator = (FFHeaderI const & f
+ 		}
+ 		if (ffh.data)
+ 		{
+-			data = malloc(length);
++			//data = malloc(length);
++			data = new uint8_t[length];
+ 			memcpy(data,ffh.data,length);
+ 		}
+ 		ptrdiff_t offset = (size_t)data - (size_t)ffh.data;
+@@ -258,7 +268,7 @@ FFHeaderI & FFHeaderI::operator = (FFHeaderI const & f
+ FFHeaderI::~FFHeaderI()
+ {
+ 	if (filename) delete[] filename;
+-	if (data) free(data);
++	if (data) delete[] data;
+ }
+ 
+ int FFHeaderI::operator == (FFHeaderI const & ffh) const
+@@ -268,7 +278,7 @@ int FFHeaderI::operator == (FFHeaderI const & ffh) con
+ 
+ void FFHeaderI::Clear()
+ {
+-	if (data) free(data);
++	if (data) delete[] data;
+ 	data = 0;
+ 	length = 0;
+ 	
+@@ -281,13 +291,16 @@ void FFHeaderI::Clear()
+ 
+ FFError FFHeaderI::Read(char const *_filename)
+ {
++	printf("FFHeaderI::Read: trying to read: %s\n", _filename);
+ 	if (_filename)
+ 	{
++		
+ 		if (filename) delete[] filename;
+ 		filename = new char [strlen(_filename)+1];
+ 		strcpy(filename,_filename);
+-	}
+-	
++	} 
++	printf("FFHeaderI::Read: trying to read: %s\n", filename);
++
+ 	FILE *h = OpenGameFile(filename, FILEMODE_READONLY, FILETYPE_PERM);
+ 	
+ 	if (h == NULL)
+@@ -301,8 +314,8 @@ FFError FFHeaderI::Read(char const *_filename)
+ 	
+ 	char magic[4];
+ 	unsigned long rffl_version;
+-	size_t num_files;
+-	size_t total_headsize;
++	uint32_t num_files;
++	uint32_t total_headsize;
+ 	
+ 	DWORD bytes_read;
+ 	
+@@ -311,7 +324,13 @@ FFError FFHeaderI::Read(char const *_filename)
+ 	READ_FILE(filename,(void)0,fclose(h),h,&num_files,4,bytes_read,0)
+ 	READ_FILE(filename,(void)0,fclose(h),h,&total_headsize,4,bytes_read,0)
+ 	READ_FILE(filename,(void)0,fclose(h),h,&length,4,bytes_read,0)
+-	
++
++	printf("PACK DETAILS FOLLOW:\n\n");
++	printf("magic: %.4s\n", magic);
++	printf("rffl_version: %lu\n", rffl_version);
++	printf("total_headsize: %i\n", total_headsize);
++	printf("length: %zu\n\n", length);
++
+ 	if (strncmp(magic,"RFFL",4))
+ 	{
+ 		ReportError(filename,"Incorrect file type");
+@@ -320,49 +339,56 @@ FFError FFHeaderI::Read(char const *_filename)
+ 	}
+ 	if (rffl_version>0)
+ 	{
++		printf("%s: Version %l not supported, ignoring though\n", filename, rffl_version);
+ 		ReportError(filename,"Version not supported");
+ 		fclose(h);
+ 		return FF_COULDNOTREADFILE;
+ 	}
+ 	
+-	void * header = malloc(total_headsize);
++	//uint8_t * header = malloc(total_headsize);
++	uint8_t * header = new uint8_t[total_headsize];
+ 	
+ 	READ_FILE(filename,(void)0,fclose(h),h,header,total_headsize,bytes_read,0)
++
++	data = new uint8_t[total_headsize];
++//	data = malloc(length);
+ 	
+-	data = malloc(length);
+-	
+ 	READ_FILE(filename,(void)0,fclose(h),h,data,length,bytes_read,0)
+ 	
+ 	fclose(h);
+ 	
+ 	// now parse the header
+ 	
+-	void * headerP = header;
++	uint8_t * headerP = header;
+ 	
+ 	for (unsigned int i=0; i<num_files; ++i)
+ 	{
+-		char const * fnameP = (char *)((size_t)headerP + 8);
+-		size_t leng = *(size_t *)((size_t)headerP + 4);
++		char const * fnameP = (char *)((long long)headerP + 8);
++		long long leng = *(size_t *)((size_t)headerP + 4);
+ 		void * dataP = (void *)((size_t)data + *(size_t *)headerP);
+ 		
+ 		files[HashFunction(fnameP)].add_entry(FFDataI(fnameP,dataP,leng));
+ 		
+ 		// increment pointer
+-		headerP = (void *)((size_t)headerP + 8 + strlen(fnameP) +4&~3);
++		//headerP = (void *)((size_t)headerP + 8 + strlen(fnameP) +4&~3);
++		headerP += 8 + ((strlen(fnameP) + 4) & ~3);
+ 	}
+ 	
+-	free(header);
+-	
++	delete[] header;
++
++	printf("FFHeaderI::Read: success\n");
+ 	return FF_OK;
+ }
+ 
+ void const * FFHeaderI::FindFile(char const * name, size_t * lengthP) const
+ {
++	printf("FFHeaderI::FindFile: checking for file: %s\n", name);
+ 	for (CLIF<FFDataI> i_file(&files[HashFunction(name)]); !i_file.done(); i_file.next())
+ 	{
+ 		if (i_file()==name)
+ 		{
+ 			if (lengthP) *lengthP = i_file().GetLength();
++			printf("FFHeaderI::FindFile: found file %s with the length of %i\n", name, lengthP);
+ 			return i_file().GetDataPointer();
+ 		}
+ 	}

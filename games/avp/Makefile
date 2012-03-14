@@ -1,8 +1,7 @@
 # $OpenBSD$
 
-#ONLY_FOR_ARCHS =	???
-#NOT_FOR_ARCHS =	???
-#SHARED_ONLY =		???
+ONLY_FOR_ARCHS =	i386 amd64
+BROKEN-amd64 =		64b and endianness bugs when loading data
 
 COMMENT =		first person shooter
 COMMIT_ID =		66feb1c
@@ -24,26 +23,16 @@ WANTLIB += SDL c m openal pthread stdc++
 FETCH_MANUALLY += "You must fetch ${DISTNAME}.tar.gz from"
 FETCH_MANUALLY += "${HOMEPAGE}/tarball/${COMMIT_ID} manually."
 
-#MODULES =		???
-#BUILD_DEPENDS =	???
-#RUN_DEPENDS =		???
 LIB_DEPENDS =		audio/openal \
 			devel/sdl
+# For debugging
+#DEBUG =			-ggdb3 -O0 -DDB_LEVEL=5
 
 MAKE_FLAGS =		CC="${CC}" CXX="${CXX}"
 MAKE_ENV =		CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}"
 
 USE_GMAKE =		Yes
 NO_REGRESS =		Yes
-
-# Overrides for default values
-#
-#CFLAGS =		???
-#LDFLAGS =		???
-#WRKDIST =		??? if other than ${WRKDIR}/${DISTNAME}
-#WRKSRC =		??? if other than ${WRKDIST}
-#WRKBUILD =		??? if other than ${WRKSRC}
-#WRKCONF =		??? if other than ${WRKBUILD}
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/avp ${PREFIX}/bin

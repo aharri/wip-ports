@@ -1,0 +1,18 @@
+$OpenBSD$
+--- src/win95/chnktexi.cpp.orig	Tue Mar 13 16:07:51 2012
++++ src/win95/chnktexi.cpp	Tue Mar 13 16:08:35 2012
+@@ -103,12 +103,14 @@ static char * RiffBasename(Chunk_With_Children * pEnvD
+ static inline bool IsFileInFastFile(char const * pszFileName)
+ {
+ 	size_t nLen;
++	printf("Checking for fastfile: %s\n", pszFileName);
+ 	return ffreadbuf(pszFileName,&nLen) ? true : false;
+ }
+ #endif
+ 
+ static bool DoesFileExist(char const * pszFileName)
+ {
++	printf("Checking for file: %s\n", pszFileName);
+ 	unsigned int attr = GetGameFileAttributes(pszFileName, FILETYPE_PERM);
+ 
+ 	if ((attr & FILEATTR_DIRECTORY) != 0)
