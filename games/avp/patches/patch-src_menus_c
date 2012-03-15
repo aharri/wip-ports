@@ -1,0 +1,21 @@
+$OpenBSD$
+--- src/menus.c.orig	Thu Mar 15 15:32:46 2012
++++ src/menus.c	Thu Mar 15 15:35:07 2012
+@@ -290,7 +290,7 @@ static void LoadMenuFont()
+ {
+ 	AVPMENUGFX *gfxPtr;
+ 	char buffer[100];
+-	unsigned int fastFileLength;
++	uint32_t fastFileLength;
+ 	void const *pFastFileData;
+ 	
+ 	IntroFont_Light.height = 33;
+@@ -1050,7 +1050,7 @@ void LoadAvPMenuGfx(enum AVPMENUGFX_ID menuGfxID)
+ {
+ 	AVPMENUGFX *gfxPtr;
+ 	char buffer[100];
+-	unsigned int fastFileLength;
++	uint32_t fastFileLength;
+ 	void const *pFastFileData;
+ 	
+ 	GLOBALASSERT(menuGfxID < MAX_NO_OF_AVPMENUGFXS);

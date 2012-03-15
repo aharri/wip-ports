@@ -1,0 +1,12 @@
+$OpenBSD$
+--- src/avp/win95/ffstdio.h.orig	Thu Mar 15 15:56:46 2012
++++ src/avp/win95/ffstdio.h	Thu Mar 15 15:56:36 2012
+@@ -48,7 +48,7 @@ extern long    fftell(FFILE * fp);
+ /* this function is called by ffopen, but you can call it direct
+    to get a pointer to memory where the contents of a file exist */
+ /* nb. the buffer remains valid until a call to ffcloseall */
+-extern void const * ffreadbuf(char const * filename, size_t * len);
++extern void const * ffreadbuf(char const * filename, uint32_t * len);
+ 
+ /* speedy macros */
+ #define ffclearerr(fp) ((fp)->flag &= ~(FFF_ERR|FFF_EOF))

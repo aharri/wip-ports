@@ -1,0 +1,30 @@
+$OpenBSD$
+--- src/avp/win95/progress_bar.cpp.orig	Thu Mar 15 15:41:57 2012
++++ src/avp/win95/progress_bar.cpp	Thu Mar 15 15:42:19 2012
+@@ -59,7 +59,7 @@ void Start_Progress_Bar()
+ 		CL_GetImageFileName(buffer, 100,Loading_Bar_Empty_Image_Name, LIO_RELATIVEPATH);
+ 		
+ 		//see if graphic can be found in fast file
+-		size_t fastFileLength;
++		uint32_t fastFileLength;
+ 		void const * pFastFileData = ffreadbuf(buffer,&fastFileLength);
+ 		
+ 		if(pFastFileData)
+@@ -89,7 +89,7 @@ void Start_Progress_Bar()
+ 		CL_GetImageFileName(buffer, 100,Loading_Bar_Full_Image_Name, LIO_RELATIVEPATH);
+ 		
+ 		//see if graphic can be found in fast file
+-		size_t fastFileLength;
++		uint32_t fastFileLength;
+ 		void const * pFastFileData = ffreadbuf(buffer,&fastFileLength);
+ 		
+ 		if(pFastFileData)
+@@ -128,7 +128,7 @@ void Start_Progress_Bar()
+ 	
+ 
+ 	//see if graphic can be found in fast file
+-	size_t fastFileLength;
++	uint32_t fastFileLength;
+ 	void const * pFastFileData = ffreadbuf(buffer,&fastFileLength);
+ 	
+ 	if(pFastFileData)

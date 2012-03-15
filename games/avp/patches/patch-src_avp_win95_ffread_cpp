@@ -1,6 +1,6 @@
 $OpenBSD$
 --- src/avp/win95/ffread.cpp.orig	Sun Nov 22 03:17:58 2009
-+++ src/avp/win95/ffread.cpp	Wed Mar 14 21:29:36 2012
++++ src/avp/win95/ffread.cpp	Thu Mar 15 15:17:33 2012
 @@ -68,6 +68,7 @@ void ReportError(char const * mesg1, char const * mesg
  	}
  	
@@ -195,7 +195,8 @@ $OpenBSD$
  	return FF_OK;
  }
  
- void const * FFHeaderI::FindFile(char const * name, size_t * lengthP) const
+-void const * FFHeaderI::FindFile(char const * name, size_t * lengthP) const
++void const * FFHeaderI::FindFile(char const * name, uint32_t * lengthP) const
  {
 +	printf("FFHeaderI::FindFile: checking for file: %s\n", name);
  	for (CLIF<FFDataI> i_file(&files[HashFunction(name)]); !i_file.done(); i_file.next())

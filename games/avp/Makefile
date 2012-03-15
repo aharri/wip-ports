@@ -26,7 +26,8 @@ FETCH_MANUALLY += "${HOMEPAGE}/tarball/${COMMIT_ID} manually."
 LIB_DEPENDS =		audio/openal \
 			devel/sdl
 # For debugging
-DEBUG =			-ggdb3 -O0 -DDB_LEVEL=5 -Wall -Wextra
+DEBUG =			-ggdb3 -O0 -DDB_LEVEL=5 -Wall -Wextra \
+			-Wno-unused-variable -Wno-unused-parameter
 
 MAKE_FLAGS =		CC="${CC}" CXX="${CXX}"
 MAKE_ENV =		CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}"

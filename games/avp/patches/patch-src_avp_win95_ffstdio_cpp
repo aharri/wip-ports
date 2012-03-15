@@ -1,0 +1,27 @@
+$OpenBSD$
+--- src/avp/win95/ffstdio.cpp.orig	Thu Mar 15 14:07:45 2012
++++ src/avp/win95/ffstdio.cpp	Thu Mar 15 15:16:50 2012
+@@ -314,12 +314,13 @@ char * ffgets(char * s, int n, FFILE * fp)
+ 	return s;
+ }
+ 
+-void const * ffreadbuf(char const * filename, size_t * p_len)
++void const * ffreadbuf(char const * filename, uint32_t * p_len)
+ {
+ 	void const * data;
+ 	
+ 	for (LIF<FFHeaderI *> i_ff(&fflist); !i_ff.done(); i_ff.next())
+ 	{
++		printf("ffreadbuf: p_len=%i\n", *p_len);
+ 		data = i_ff()->FindFile(filename,p_len);
+ 		if (data) return data;
+ 	}
+@@ -349,7 +350,7 @@ FFILE * ffopen(char const * filename, char const * mod
+ {
+ 	if (mode[0]!='r' || mode[1]!='b') return 0;
+ 	
+-	size_t length;
++	uint32_t length;
+ 	void const * data = ffreadbuf(filename,&length);
+ 	
+ 	if (data)

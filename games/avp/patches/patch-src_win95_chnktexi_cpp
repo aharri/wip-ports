@@ -1,10 +1,12 @@
 $OpenBSD$
---- src/win95/chnktexi.cpp.orig	Tue Mar 13 16:07:51 2012
-+++ src/win95/chnktexi.cpp	Tue Mar 13 16:08:35 2012
-@@ -103,12 +103,14 @@ static char * RiffBasename(Chunk_With_Children * pEnvD
+--- src/win95/chnktexi.cpp.orig	Sun Nov 22 03:17:58 2009
++++ src/win95/chnktexi.cpp	Thu Mar 15 15:43:52 2012
+@@ -102,13 +102,15 @@ static char * RiffBasename(Chunk_With_Children * pEnvD
+ #if CL_SUPPORT_FASTFILE
  static inline bool IsFileInFastFile(char const * pszFileName)
  {
- 	size_t nLen;
+-	size_t nLen;
++	uint32_t nLen;
 +	printf("Checking for fastfile: %s\n", pszFileName);
  	return ffreadbuf(pszFileName,&nLen) ? true : false;
  }
@@ -16,3 +18,21 @@ $OpenBSD$
  	unsigned int attr = GetGameFileAttributes(pszFileName, FILETYPE_PERM);
  
  	if ((attr & FILEATTR_DIRECTORY) != 0)
+@@ -714,7 +716,7 @@ int CL_LoadImageOnce(char const * pszFileName, unsigne
+ 		case LIO_DDSURFACE:
+ 		{
+ 			#if CL_SUPPORT_FASTFILE
+-			size_t nFastFileLen;
++			uint32_t nFastFileLen;
+ 			void const * pFastFileData = ffreadbuf(szBuf,&nFastFileLen);
+ 			if (pFastFileData)
+ 			{
+@@ -823,7 +825,7 @@ int CL_LoadImageOnce(char const * pszFileName, unsigne
+ 		{
+ 			fAwLoad |= AW_TLF_COMPRESS; // required on some cards!!
+ 			#if CL_SUPPORT_FASTFILE
+-			size_t nFastFileLen;
++			uint32_t nFastFileLen;
+ 			void const * pFastFileData = ffreadbuf(szBuf,&nFastFileLen);
+ 			if (pFastFileData)
+ 			{
