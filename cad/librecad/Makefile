@@ -1,5 +1,7 @@
 # $OpenBSD$
 
+BROKEN =	Does not save documents
+
 COMMENT =	Qt-based 2D CAD system
 
 V =		20120306
