@@ -1,8 +1,7 @@
 # $OpenBSD: ports/games/openxcom/Makefile,v 1.4 2012/03/05 17:57:21 nigel Exp $
 
 COMMENT =		open source reimplementation of the original X-Com
-DISTNAME =		openxcom-20120217
-REVISION =		0
+DISTNAME =		openxcom-20120317
 CATEGORIES =		games x11
 
 HOMEPAGE =		http://openxcom.ninex.info/
@@ -33,13 +32,5 @@ VMEM_WARNING =		Yes
 
 pre-configure:
 	${SUBST_CMD} ${WRKSRC}/src/Engine/CrossPlatform.cpp
-
-post-patch:
-	find "${WRKSRC}" \( -name '*.h' -o -name '*.cpp' \) -print0 | \
-		xargs -0r perl -pi -e 's,yaml.h,yaml-cpp/yaml.h,'
-
-post-install:
-	${INSTALL_DATA_DIR} ${PREFIX}/share/openxcom
-	cd ${WRKDIST}/bin/data && find . | pax -rw ${PREFIX}/share/openxcom
 
 .include <bsd.port.mk>

@@ -1,4 +1,4 @@
-@comment $OpenBSD: ports/games/openxcom/pkg/PLIST,v 1.2 2011/07/18 10:57:01 jasper Exp $
+@comment $OpenBSD: ports/games/openxcom/pkg/PLIST,v 1.3 2012/02/29 08:25:32 ajacoutot Exp $
 @bin bin/openxcom
 share/doc/pkg-readmes/${FULLPKGNAME}
 share/openxcom/
@@ -23,6 +23,8 @@ share/openxcom/Language/Small.fnt
 share/openxcom/Language/Spanish.geo
 share/openxcom/Language/Spanish.lng
 share/openxcom/README.txt
+share/openxcom/Ruleset/
+share/openxcom/Ruleset/Xcom1Ruleset.rul
 share/openxcom/SoldierName/
 share/openxcom/SoldierName/American.nam
 share/openxcom/SoldierName/British.nam
