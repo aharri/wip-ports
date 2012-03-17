@@ -4,7 +4,7 @@ COMMENT =		open source reimplementation of the original X-Com
 DISTNAME =		openxcom-20120317
 CATEGORIES =		games x11
 
-HOMEPAGE =		http://openxcom.ninex.info/
+HOMEPAGE =		http://openxcom.org/
 MAINTAINER =		Antti Harri <iku@openbsd.fi>
 
 # GPLv3
