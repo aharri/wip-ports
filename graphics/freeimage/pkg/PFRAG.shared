@@ -1,3 +1,0 @@
-@comment $OpenBSD: ports/graphics/freeimage/pkg/PFRAG.shared,v 1.1.1.1 2009/03/20 13:53:04 eric Exp $
-@lib lib/libfreeimage.so.${LIBfreeimage_VERSION}
-@lib lib/libfreeimageplus.so.${LIBfreeimageplus_VERSION}

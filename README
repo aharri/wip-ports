@@ -28,7 +28,6 @@ games/aquaria
 games/eduke32
 games/tkb
 games/tyrquake
-graphics/freeimage
 net/pktstat
 net/rsyncrypto
 sysutils/ohtools
