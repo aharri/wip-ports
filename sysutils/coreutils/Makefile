@@ -3,7 +3,7 @@
 COMMENT =		file, shell and text manipulation utilities
 DISTNAME =		coreutils-8.15
 
-CATEGORIES =		sysutils misc textproc
+CATEGORIES =		sysutils
 
 HOMEPAGE =		http://www.gnu.org/software/coreutils/coreutils.html
 
@@ -21,9 +21,8 @@ EXTRACT_SUFX =		.tar.xz
 MODULES =		devel/gettext
 
 CONFIGURE_STYLE =	gnu
-CONFIGURE_ARGS =	--program-prefix=g
-
-NO_REGRESS =		Yes
+CONFIGURE_ARGS =	--program-prefix=g \
+			--without-gmp
 
 # Prevent conflicts with: id, gpr and god
 post-install:
