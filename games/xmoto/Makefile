@@ -41,14 +41,13 @@ SEPARATE_BUILD =	Yes
 USE_GROFF =		Yes
 
 CONFIGURE_STYLE =	gnu
-CONFIGURE_ENV =		CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS}"
+CONFIGURE_ENV =		CPPFLAGS="`pkg-config --cflags libpng sqlite3 sdl` -DSVN_REV='\"${V}\"'" \
+			LDFLAGS="`pkg-config --libs libpng sdl` -lGL"
 AUTOMAKE_VERSION =	1.11
 AUTOCONF_VERSION =	2.68
 
 NO_REGRESS =		Yes
 
-CPPFLAGS =		`pkg-config --cflags libpng sqlite3 sdl` -DSVN_REV='\"${V}\"'
-LDFLAGS =		`pkg-config --libs libpng sdl` -lGL
 WRKDIST =		${WRKDIR}/${DISTNAME:S/-src//}
 
 pre-configure:
