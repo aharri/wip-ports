@@ -8,6 +8,7 @@ cad/freecad
 cad/opencascade
 devel/clanlib
 devel/libchipmunk
+emulators/wine
 games/openxcom
 games/allegro
 games/fheroes2
