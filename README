@@ -9,9 +9,6 @@ cad/opencascade
 devel/clanlib
 devel/libchipmunk
 games/openxcom
-games/megaglest/base
-games/megaglest/data
-games/megaglest
 games/allegro
 games/fheroes2
 games/enemy-territory
@@ -30,4 +27,5 @@ games/tyrquake
 net/pktstat
 net/rsyncrypto
 sysutils/ohtools
+sysutils/coreutils
 x11/soqt

@@ -1,0 +1,12 @@
+$OpenBSD$
+--- tools/winegcc/utils.h.orig	Fri Mar 23 20:22:47 2012
++++ tools/winegcc/utils.h	Fri Mar 23 20:23:08 2012
+@@ -42,7 +42,7 @@ enum target_cpu
+ 
+ enum target_platform
+ {
+-    PLATFORM_UNSPECIFIED, PLATFORM_APPLE, PLATFORM_SOLARIS, PLATFORM_WINDOWS, PLATFORM_CYGWIN
++    PLATFORM_UNSPECIFIED, PLATFORM_APPLE, PLATFORM_SOLARIS, PLATFORM_WINDOWS, PLATFORM_CYGWIN, PLATFORM_OPENBSD
+ };
+ 
+ void error(const char* s, ...) DECLSPEC_NORETURN;

@@ -1,0 +1,44 @@
+--- configure.ac.orig	Wed Mar  7 18:11:48 2012
++++ configure.ac	Thu Mar 22 21:35:38 2012
+@@ -143,6 +143,23 @@ case $host in
+       enable_win16=${enable_win16:-yes}
+     fi
+     ;;
++  *-openbsd*)
++    if test "x$enable_win64" = "xyes"
++    then
++      CC="$CC -m64"
++      CXX="$CXX -m64"
++      host_cpu="x86_64"
++      notice_platform="64-bit "
++      AC_SUBST(TARGETFLAGS,"-m64")
++    else
++      CC="$CC -m32"
++      CXX="$CXX -m32"
++      host_cpu="i386"
++      notice_platform="32-bit "
++      AC_SUBST(TARGETFLAGS,"-m32")
++      enable_win16=${enable_win16:-yes}
++    fi
++    ;;
+   x86_64*)
+     if test "x$enable_win64" != "xyes" -a "$cross_compiling" != "yes"
+     then
+@@ -227,7 +244,7 @@ then
+ fi
+ 
+ dnl Check for flex
+-AC_CHECK_PROGS(FLEX,flex,none)
++AC_CHECK_PROGS(FLEX,gflex,none)
+ if test "$FLEX" = "none"
+ then
+   AC_MSG_ERROR([no suitable flex found. Please install the 'flex' package.])
+@@ -913,7 +930,7 @@ dnl **** Check for pthread ****
+ 
+ if test "$ac_cv_header_pthread_h" = "yes"
+ then
+-    AC_CHECK_LIB(pthread,pthread_create,[AC_SUBST(LIBPTHREAD,"-lpthread")])
++    AC_CHECK_LIB(pthread,pthread_create,[AC_SUBST(LIBPTHREAD,"-pthread")])
+ fi
+ WINE_ERROR_WITH(pthread,[test "x$LIBPTHREAD" = "x"],[pthread ${notice_platform}development files not found.
+ Wine cannot support threads without libpthread.])

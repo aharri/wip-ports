@@ -1,0 +1,12 @@
+$OpenBSD$
+--- tools/winebuild/main.c.orig	Thu Mar 22 20:29:10 2012
++++ tools/winebuild/main.c	Thu Mar 22 20:29:13 2012
+@@ -67,6 +67,8 @@ enum target_cpu target_cpu = CPU_ARM;
+ enum target_platform target_platform = PLATFORM_APPLE;
+ #elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
+ enum target_platform target_platform = PLATFORM_FREEBSD;
++#elif defined(__OpenBSD__)
++enum target_platform target_platform = PLATFORM_OPENBSD;
+ #elif defined(__sun)
+ enum target_platform target_platform = PLATFORM_SOLARIS;
+ #elif defined(_WIN32)

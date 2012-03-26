@@ -1,0 +1,42 @@
+$OpenBSD$
+--- tools/winegcc/utils.c.orig	Wed Mar  7 18:11:48 2012
++++ tools/winegcc/utils.c	Fri Mar 23 22:09:21 2012
+@@ -28,6 +28,8 @@
+ #include <stdlib.h>
+ #include <errno.h>
+ 
++#include <sys/syslimits.h>
++
+ #include "utils.h"
+ 
+ #if !defined(min)
+@@ -239,6 +241,7 @@ static char* try_lib_path(const char* dir, const char*
+ 			  file_type expected_type)
+ {
+     char *fullname;
++    char temp[PATH_MAX];
+     file_type type;
+ 
+     /* first try a subdir named from the library we are looking for */
+@@ -247,6 +250,10 @@ static char* try_lib_path(const char* dir, const char*
+     type = get_file_type(fullname);
+     if (verbose > 1) fprintf(stderr, type == expected_type ? "FOUND!\n" : "no\n");
+     if (type == expected_type) return fullname;
++    sprintf(temp, "/bin/ls %s.*.* 1>/dev/null 2>&1\n", fullname);
++
++    if (system(temp) == 0)
++        return fullname;
+     free( fullname );
+ 
+     fullname = strmake("%s/%s%s%s", dir, pre, library, ext);
+@@ -254,6 +261,10 @@ static char* try_lib_path(const char* dir, const char*
+     type = get_file_type(fullname);
+     if (verbose > 1) fprintf(stderr, type == expected_type ? "FOUND!\n" : "no\n");
+     if (type == expected_type) return fullname;
++    sprintf(temp, "/bin/ls %s.*.* 1>/dev/null 2>&1\n", fullname);
++
++    if (system(temp) == 0)
++        return fullname;
+     free( fullname );
+     return 0; 
+ }

@@ -1,0 +1,18 @@
+$OpenBSD$
+--- tools/Makefile.in.orig	Sat Mar 24 00:26:11 2012
++++ tools/Makefile.in	Sat Mar 24 00:26:34 2012
+@@ -74,7 +74,6 @@ install install-lib:: wine.inf $(INSTALLDIRS)
+ 	$(INSTALL_DATA) wine.inf $(DESTDIR)$(datadir)/wine/wine.inf
+ 	$(INSTALL_DATA) $(srcdir)/l_intl.nls $(DESTDIR)$(datadir)/wine/l_intl.nls
+ 	$(INSTALL_DATA) $(srcdir)/wine.desktop $(DESTDIR)$(datadir)/applications/wine.desktop
+-	-$(UPDATE_DESKTOP_DATABASE)
+ 
+ install install-dev:: $(DESTDIR)$(bindir) install-man-pages
+ 	$(INSTALL_SCRIPT) $(srcdir)/winemaker $(DESTDIR)$(bindir)/winemaker
+@@ -90,6 +89,5 @@ uninstall::
+ 		$(DESTDIR)$(bindir)/winemaker \
+ 		$(DESTDIR)$(mandir)/de.UTF-8/man$(prog_manext)/winemaker.$(prog_manext) \
+ 		$(DESTDIR)$(mandir)/fr.UTF-8/man$(prog_manext)/winemaker.$(prog_manext)
+-	-$(UPDATE_DESKTOP_DATABASE)
+ 
+ depend: makedep$(EXEEXT)

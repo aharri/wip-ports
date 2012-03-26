@@ -1,0 +1,11 @@
+$OpenBSD$
+--- tools/winebuild/build.h.orig	Thu Mar 22 20:28:33 2012
++++ tools/winebuild/build.h	Thu Mar 22 20:28:40 2012
+@@ -148,6 +148,7 @@ enum target_platform
+     PLATFORM_UNSPECIFIED,
+     PLATFORM_APPLE,
+     PLATFORM_FREEBSD,
++    PLATFORM_OPENBSD,
+     PLATFORM_SOLARIS,
+     PLATFORM_WINDOWS
+ };
