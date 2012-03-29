@@ -2,7 +2,8 @@
 
 COMMENT =	cross-platform 3D audio API
 
-V =		20120311
+V =		1.14
+EPOCH =		0
 DISTNAME =	openal-soft-$V
 PKGNAME =	openal-$V
 CATEGORIES =	audio
@@ -20,17 +21,21 @@ PERMIT_DISTFILES_FTP =	Yes
 
 WANTLIB =	c m pthread sndio
 
-MASTER_SITES =	${HOMEPAGE:S,.html,-releases/,} \
-		http://openbsd.fi/dist/
+MASTER_SITES =	${HOMEPAGE:S,.html,-releases/,}
+EXTRACT_SUFX =	.tar.bz2
 
 CONFIGURE_ARGS =-DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG"	\
 		-DCMAKE_BUILD_TYPE=OpenBSD		\
 		-DDLOPEN=Off				\
+		-DREQUIRE_SNDIO=On			\
 		-DPULSEAUDIO=Off			\
 		-DPORTAUDIO=Off				\
 		-DSOLARIS=Off				\
 		-DALSA=Off				\
 		-DOSS=Off				\
+		-DCOREAUDIO=Off				\
+		-DDSOUND=Off				\
+		-DOPENSL=Off				\
 		-DEXAMPLES=Off
 
 MODULES =	devel/cmake
