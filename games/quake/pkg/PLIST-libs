@@ -171,8 +171,6 @@ lib/quakeforge/plugins/console_client.a
 lib/quakeforge/plugins/console_client.la
 lib/quakeforge/plugins/console_server.a
 lib/quakeforge/plugins/console_server.la
-@comment lib/quakeforge/plugins/snd_output_disk.a
-@comment lib/quakeforge/plugins/snd_output_disk.la
 lib/quakeforge/plugins/snd_output_sdl.a
 lib/quakeforge/plugins/snd_output_sdl.la
 lib/quakeforge/plugins/snd_output_sdl.so

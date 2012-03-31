@@ -7,8 +7,8 @@ COMMENT-server =	QuakeWorld server
 # .so.1.0
 SOMAJOR =		1
 SOMINOR =		0
-V =			0.6.2.20120303
-DISTNAME =		quakeforge-20120303
+V =			0.6.3
+DISTNAME =		quakeforge-$V
 PKGNAME-main =		quake-$V
 PKGNAME-libs =		quake-libs-$V
 FULLPKGNAME-server =	quakeworld-server-$V
@@ -45,19 +45,19 @@ PERMIT_DISTFILES_CDROM =Yes
 PERMIT_DISTFILES_FTP =	Yes
 
 WANTLIB-main += QFcd QFconsole QFgib QFimage QFjs QFmodels
-WANTLIB-main += QFmodels_gl QFmodels_glsl QFmodels_sw
+WANTLIB-main += QFmodels_gl QFmodels_sw QFmodels_glsl
 WANTLIB-main += QFruamoko QFsound QFutil SDL X11 Xext Xxf86dga Xxf86vm
-WANTLIB-main += Xrandr Xrender c crypto idn m ncurses png pthread sndio
-WANTLIB-main += ssl usbhid xcb z curl ${MODGETTEXT_WANTLIB}
+WANTLIB-main += c crypto idn m ncurses png pthread sndio ssl usbhid
+WANTLIB-main += xcb z curl ${MODGETTEXT_WANTLIB}
 
 WANTLIB-libs += FLAC SDL m ncurses ogg png samplerate sndio usbhid
-WANTLIB-libs += vorbis vorbisfile z iconv Xrandr Xrender
+WANTLIB-libs += vorbis vorbisfile z iconv
 
 WANTLIB-server += QFconsole QFgib QFimage QFmodels QFruamoko
 WANTLIB-server += QFutil c m ncurses png pthread z
 
 MASTER_SITES =		${MASTER_SITE_SOURCEFORGE:=quake/}
-#EXTRACT_SUFX =		.tar.bz2
+EXTRACT_SUFX =		.tar.bz2
 
 MODULES =		devel/gettext
 BUILD_DEPENDS =		devel/bison
