@@ -1,6 +1,6 @@
 # $OpenBSD$
 
-V =		20111116
+V =		20120409
 COMMENT =	tools collection
 
 DISTNAME =	ohtools-${V}
@@ -16,7 +16,8 @@ PERMIT_DISTFILES_FTP =		Yes
 
 MASTER_SITES = http://openbsd.fi/dist/
 
-RUN_DEPENDS =	graphics/jhead
+RUN_DEPENDS =	graphics/gphoto2 \
+		graphics/jhead
 NO_BUILD =	Yes
 PKG_ARCH =	*
 DESTDIRNAME =
