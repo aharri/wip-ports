@@ -1,0 +1,9 @@
+$OpenBSD$
+--- yle-dl.orig	Sat Oct  6 10:39:12 2012
++++ yle-dl	Sat Oct  6 10:39:15 2012
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!${MODPY_BIN}
+ # -*- coding: utf-8 -*-
+ 
+ """
