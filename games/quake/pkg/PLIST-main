@@ -2,12 +2,7 @@
 @pkgpath ${BASE_PKGPATH},-main[,sdl][,ggi][,x11][,gl]
 @bin bin/bsp2img
 @comment @bin bin/hw-master
-@bin bin/nq-glslx
-@bin bin/nq-glx
 @bin bin/nq-sdl
-@bin bin/nq-sdl32
-@bin bin/nq-sgl
-@bin bin/nq-sglsl
 @bin bin/nq-x11
 @bin bin/pak
 @bin bin/qfbsp
@@ -18,44 +13,15 @@
 @bin bin/qfpc
 bin/qfpreqcc
 @bin bin/qfprogs
+@bin bin/qfspritegen
 @bin bin/qfvis
 @bin bin/qfwavinfo
 @bin bin/qtv
-@bin bin/qw-client-glslx
-@bin bin/qw-client-glx
 @bin bin/qw-client-sdl
-@bin bin/qw-client-sdl32
-@bin bin/qw-client-sgl
-@bin bin/qw-client-sglsl
 @bin bin/qw-client-x11
 @bin bin/qw-master
 @bin bin/wad
 bin/zpak
-lib/libQFcd.a
-lib/libQFcd.la
-lib/libQFconsole.a
-lib/libQFconsole.la
-lib/libQFgib.a
-lib/libQFgib.la
-lib/libQFimage.a
-lib/libQFimage.la
-lib/libQFjs.a
-lib/libQFjs.la
-lib/libQFmodels.a
-lib/libQFmodels.la
-lib/libQFmodels_gl.a
-lib/libQFmodels_gl.la
-lib/libQFmodels_glsl.a
-lib/libQFmodels_glsl.la
-lib/libQFmodels_sw.a
-lib/libQFmodels_sw.la
-lib/libQFruamoko.a
-lib/libQFruamoko.la
-lib/libQFsound.a
-lib/libQFsound.la
-lib/libQFutil.a
-lib/libQFutil.la
-lib/pkgconfig/
 @man man/man1/pak.1
 @man man/man1/qfcc.1
 @man man/man1/qflight.1

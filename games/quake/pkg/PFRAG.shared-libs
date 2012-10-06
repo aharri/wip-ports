@@ -5,9 +5,6 @@
 @lib lib/libQFimage.so.${LIBQFimage_VERSION}
 @lib lib/libQFjs.so.${LIBQFjs_VERSION}
 @lib lib/libQFmodels.so.${LIBQFmodels_VERSION}
-@lib lib/libQFmodels_gl.so.${LIBQFmodels_gl_VERSION}
-@lib lib/libQFmodels_glsl.so.${LIBQFmodels_glsl_VERSION}
-@lib lib/libQFmodels_sw.so.${LIBQFmodels_sw_VERSION}
 @lib lib/libQFruamoko.so.${LIBQFruamoko_VERSION}
 @lib lib/libQFsound.so.${LIBQFsound_VERSION}
 @lib lib/libQFutil.so.${LIBQFutil_VERSION}
@@ -15,4 +12,9 @@ lib/quakeforge/plugins/cd_file.so
 lib/quakeforge/plugins/cd_sdl.so
 lib/quakeforge/plugins/console_client.so
 lib/quakeforge/plugins/console_server.so
-@comment lib/quakeforge/plugins/snd_output_disk.so
+lib/quakeforge/plugins/snd_output_sdl.so
+lib/quakeforge/plugins/snd_render_default.so
+lib/quakeforge/plugins/vid_render_gl.so
+lib/quakeforge/plugins/vid_render_glsl.so
+lib/quakeforge/plugins/vid_render_sw.so
+lib/quakeforge/plugins/vid_render_sw32.so
